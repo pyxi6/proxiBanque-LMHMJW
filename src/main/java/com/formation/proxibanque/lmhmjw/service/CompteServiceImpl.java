@@ -1,8 +1,8 @@
-package com.formation.proxibanque.lmhmjw.compteservice.service;
+package com.formation.proxibanque.lmhmjw.service;
 
 
-import com.formation.proxibanque.lmhmjw.compteservice.entities.Compte;
-import com.formation.proxibanque.lmhmjw.compteservice.repositories.CompteRepository;
+import com.formation.proxibanque.lmhmjw.entity.Compte;
+import com.formation.proxibanque.lmhmjw.repository.CompteRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

@@ -1,4 +1,4 @@
-package com.formation.proxibanque.lmhmjw.compteservice.service;
+package com.formation.proxibanque.lmhmjw.service;
 
 public interface CompteService {
 

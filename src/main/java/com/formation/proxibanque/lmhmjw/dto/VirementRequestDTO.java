@@ -1,4 +1,4 @@
-package com.formation.proxibanque.lmhmjw.compteservice.dtos;
+package com.formation.proxibanque.lmhmjw.dto;
 
 import lombok.Data;
 

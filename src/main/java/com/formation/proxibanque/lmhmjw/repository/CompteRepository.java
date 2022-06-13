@@ -1,6 +1,6 @@
-package com.formation.proxibanque.lmhmjw.compteservice.repositories;
+package com.formation.proxibanque.lmhmjw.repository;
 
-import com.formation.proxibanque.lmhmjw.compteservice.entities.Compte;
+import com.formation.proxibanque.lmhmjw.entity.Compte;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 // la partie DAO

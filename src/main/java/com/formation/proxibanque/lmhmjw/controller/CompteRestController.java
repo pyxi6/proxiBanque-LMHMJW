@@ -1,7 +1,7 @@
-package com.formation.proxibanque.lmhmjw.compteservice.web;
+package com.formation.proxibanque.lmhmjw.controller;
 
-import com.formation.proxibanque.lmhmjw.compteservice.entities.Compte;
-import com.formation.proxibanque.lmhmjw.compteservice.repositories.CompteRepository;
+import com.formation.proxibanque.lmhmjw.entity.Compte;
+import com.formation.proxibanque.lmhmjw.repository.CompteRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

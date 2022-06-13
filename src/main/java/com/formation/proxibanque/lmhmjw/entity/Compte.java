@@ -1,6 +1,6 @@
-package com.formation.proxibanque.lmhmjw.compteservice.entities;
+package com.formation.proxibanque.lmhmjw.entity;
 
-import com.formation.proxibanque.lmhmjw.compteservice.entities.enums.TypeCompte;
+import com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

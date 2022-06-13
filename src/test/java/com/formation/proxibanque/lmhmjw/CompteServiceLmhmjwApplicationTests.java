@@ -1,4 +1,4 @@
-package com.formation.proxibanque.lmhmjw.compteservice;
+package com.formation.proxibanque.lmhmjw;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

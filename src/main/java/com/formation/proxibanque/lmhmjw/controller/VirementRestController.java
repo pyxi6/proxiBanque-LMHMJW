@@ -1,12 +1,11 @@
-package com.formation.proxibanque.lmhmjw.compteservice.web;
+package com.formation.proxibanque.lmhmjw.controller;
 
 
-import com.formation.proxibanque.lmhmjw.compteservice.dtos.VirementRequestDTO;
-import com.formation.proxibanque.lmhmjw.compteservice.service.CompteService;
+import com.formation.proxibanque.lmhmjw.dto.VirementRequestDTO;
+import com.formation.proxibanque.lmhmjw.service.CompteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
