@@ -1,19 +1,12 @@
 package com.formation.proxibanque.lmhmjw.entity;
 
 import com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-//@Inheritance(strategy = InheritanceType.JOINED)
-@Data  // creation des gether setter via l'extention Lambok
-@NoArgsConstructor // constructeur sans params
-@AllArgsConstructor // Constructeur avec tous les args
-public abstract class Compte {
+public class Compte {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY) //incrim valeur +1
@@ -72,6 +65,5 @@ public abstract class Compte {
 	public String toString() {
 		return "Compte [code=" + code + ", solde=" + solde + ", dateCreation=" + dateCreation + ", type=" + type + "]";
 	}
-    
-    
+
 }
