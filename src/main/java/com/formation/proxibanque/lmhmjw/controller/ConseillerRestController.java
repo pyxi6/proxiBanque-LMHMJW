@@ -11,41 +11,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.formation.proxibanque.lmhmjw.entity.Conseiller;
-import com.formation.proxibanque.lmhmjw.repository.ConseillerRepository;
+import com.formation.proxibanque.lmhmjw.service.ConseillerServiceImpl;
 
 @RestController
 public class ConseillerRestController {
 	
-	private ConseillerRepository conseillerRepository;
+	private ConseillerServiceImpl serviceImpl;
 
-	public ConseillerRestController(ConseillerRepository conseillerRepository) {
-		this.conseillerRepository = conseillerRepository;
+	public ConseillerRestController(ConseillerServiceImpl serviceImpl) {
+		this.serviceImpl = serviceImpl;
 	}
-	
+
 	@GetMapping(path = "/conseillers")
 	public List<Conseiller> ListConseiller(){
-		return conseillerRepository.findAll();
+		return serviceImpl.findAllConseillers();
 	}
 	
 	@GetMapping(path = "/conseillers/{id}")
 	public Conseiller getConseiller(@PathVariable Long id) {
-		return conseillerRepository.findById(id).get();
+		return serviceImpl.findConseillerById(id);
 	}
 	
 	@PostMapping(path = "/conseillers")
 	public Conseiller addConseiller(@RequestBody Conseiller conseiller) {
-		return conseillerRepository.save(conseiller);
+		return serviceImpl.addConseiller(conseiller);
 	}
 	
 	@PutMapping(path = "/conseillers/{id}")
 	public Conseiller editConseiller(@PathVariable Long id,@RequestBody Conseiller conseiller) {
-		conseiller.setId(id);
-		return conseillerRepository.save(conseiller);
+
+		return serviceImpl.modifConseiller(id,conseiller);
 	}
 	
 	@DeleteMapping(path = "/conseillers/{id}")
 	public void deleteConseiller(@PathVariable Long id) {
-		conseillerRepository.deleteById(id);
+		serviceImpl.eraseConseillerById(id);
 	}
 	
 	

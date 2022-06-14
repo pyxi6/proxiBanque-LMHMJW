@@ -11,40 +11,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.formation.proxibanque.lmhmjw.entity.Directeur;
-import com.formation.proxibanque.lmhmjw.repository.DirecteurRepository;
+import com.formation.proxibanque.lmhmjw.service.DirecteurServiceImpl;
 
 @RestController
 public class DirecteurRestController {
 
-	private DirecteurRepository directeurRepository;
+	private DirecteurServiceImpl directeurServiceImpl;
 
-	public DirecteurRestController(DirecteurRepository directeurRepository) {
-		this.directeurRepository = directeurRepository;
+	
+
+	public DirecteurRestController(DirecteurServiceImpl directeurServiceImpl) {
+		this.directeurServiceImpl = directeurServiceImpl;
 	}
 
 	@GetMapping(path = "/directeurs")
 	public List<Directeur> ListDirecteur(){
-		return directeurRepository.findAll();
+		return directeurServiceImpl.findAllDirecteurs();
 	}
 	
 	@GetMapping(path = "/directeurs/{id}")
 	public Directeur getdirecteur(@PathVariable Long id) {
-		return directeurRepository.findById(id).get();
+		return directeurServiceImpl.findDirecteurById(id);
 	}
 	
 	@PostMapping(path = "/directeurs")
 	public Directeur addDirecteur(@RequestBody Directeur directeur) {
-		return directeurRepository.save(directeur);
+		return directeurServiceImpl.addDirecteur(directeur);
 	}
 	
 	@PutMapping(path = "/directeurs/{id}")
 	public Directeur editDirecteur(@PathVariable Long id,@RequestBody Directeur directeur) {
 		directeur.setId(id);
-		return directeurRepository.save(directeur);
+		return directeurServiceImpl.modifDirecteur(id,directeur);
 	}
 	
 	@DeleteMapping(path = "/directeurs/{id}")
 	public void deleteDirecteur(@PathVariable Long id) {
-		directeurRepository.deleteById(id);
+		directeurServiceImpl.eraseDirecteurById(id);
 	}
 }

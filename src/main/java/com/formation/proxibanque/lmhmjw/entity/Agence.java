@@ -14,7 +14,4 @@ public class Agence {
 	private String id;
 	
 	private LocalDate date_ouverture;
-	
-	@OneToMany(mappedBy = "agence")
-	private List<Employee> employees;
 }
