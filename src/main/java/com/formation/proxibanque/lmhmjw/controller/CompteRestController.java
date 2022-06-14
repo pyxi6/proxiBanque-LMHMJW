@@ -11,7 +11,7 @@ public class CompteRestController {
 
     // on a besoin d'accedez a la base
     // eviter @Autowaired deprciller
-    private CompteRepository compteRepository;
+    private CompteRepository compteRepository;	
 
     // Faut generer un constructeur qui contient un param
     // injection via le constructeur (bonne pratique)
@@ -50,7 +50,7 @@ public class CompteRestController {
 
     //Suppretion d'un compte avec Delete
     @DeleteMapping(path = "/comptes/{code}")
-    public void dalete(@PathVariable Long code){
+    public void delete(@PathVariable Long code){
         compteRepository.deleteById(code);
     };
 
