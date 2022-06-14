@@ -13,34 +13,40 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.formation.proxibanque.lmhmjw.entity.Customer;
 import com.formation.proxibanque.lmhmjw.repository.CustomerRepository;
+import com.formation.proxibanque.lmhmjw.service.CustomerServiceImpl;
 
 
 @RestController
 public class CustomerRestController {
 	
 	@Autowired
-	private CustomerRepository customerRepository;
+	private CustomerServiceImpl customerServiceImpl;
 	
 	
+	public CustomerRestController(CustomerServiceImpl customerServiceImpl) {
+		super();
+		this.customerServiceImpl = customerServiceImpl;
+	}
+
 	@GetMapping(path = "/customers")
 	public List<Customer> listAllCustomers(){
-		return customerRepository.findAll();
+		return customerServiceImpl.listAllCustomersService();
 	}
 	
 	@GetMapping(path = "/customers/{id}")
 	public Customer getCustomerById(@PathVariable Long id) {
-		return customerRepository.findById(id).get();
+		return customerServiceImpl.getCustomerByIdService(id);
 	}
 	
 	@DeleteMapping(path = "/customers/{id}")
 	public void deleteCustomer(@PathVariable Long id) {
-		customerRepository.deleteById(id);
+		customerServiceImpl.deleteCustomerService(id);
 	}
 	
 	@PostMapping(path = "/customers")
 	public Customer saveCustomer(@RequestBody Customer customer) {
 		System.out.println(customer);
-		return customerRepository.save(customer);
+		return customerServiceImpl.saveCustomerService(customer);
 		
 		
 	}
@@ -48,7 +54,7 @@ public class CustomerRestController {
 	@PutMapping(path = "/customers/{id}")
 	public Customer updateCustommer(@PathVariable Long id, @RequestBody Customer customer) {
 		customer.setId(id);
-		return customerRepository.save(customer);
+		return customerServiceImpl.saveCustomerService(customer);
 		
 	}
 }
