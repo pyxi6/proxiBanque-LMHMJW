@@ -42,9 +42,9 @@ public class CompteServiceLmhmjwApplication {
 //
 //	}
 	
-	Adresse adresse1 = new Adresse("8 rue Perlimpimpin", 92800, "Puteaux");
-	Adresse adresse2 = new Adresse("7 rue Delay", 92100, "Boulogne");
-	Adresse adresse3 = new Adresse("11 rue de la Liberté", 95620, "Parmain");
+	Adresse adresse1 = new Adresse("8 rue Perlimpimpin", "92800", "Puteaux");
+	Adresse adresse2 = new Adresse("7 rue Delay", "92100", "Boulogne");
+	Adresse adresse3 = new Adresse("11 rue de la Liberté", "95620", "Parmain");
 
 	
 	@Bean

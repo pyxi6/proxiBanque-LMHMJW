@@ -6,7 +6,7 @@ import javax.persistence.Embeddable;
 public class Adresse {
 	
 	private String numEtRue;
-	private int codePostal;
+	private String codePostal;
 	private String ville;
 	
 	public String getNumEtRue() {
@@ -15,10 +15,10 @@ public class Adresse {
 	public void setNumEtRue(String numEtRue) {
 		this.numEtRue = numEtRue;
 	}
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 	public String getVille() {
@@ -28,7 +28,7 @@ public class Adresse {
 		this.ville = ville;
 	}
 	
-	public Adresse(String numEtRue, int codePostal, String ville) {
+	public Adresse(String numEtRue, String codePostal, String ville) {
 		this.numEtRue = numEtRue;
 		this.codePostal = codePostal;
 		this.ville = ville;
@@ -36,10 +36,14 @@ public class Adresse {
 	
 	public Adresse() {
 	}
+	
 	@Override
 	public String toString() {
 		return "Adresse [numEtRue=" + numEtRue + ", codePostal=" + codePostal + ", ville=" + ville + "]";
 	}
+	
+	
+
 	
 	
 	

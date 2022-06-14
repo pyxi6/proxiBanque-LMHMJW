@@ -6,17 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+	import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.formation.proxibanque.lmhmjw.entity.Customer;
 import com.formation.proxibanque.lmhmjw.repository.CustomerRepository;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-public class CustomerController {
+public class CustomerRestController {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
@@ -39,8 +39,16 @@ public class CustomerController {
 	
 	@PostMapping(path = "/customers")
 	public Customer saveCustomer(@RequestBody Customer customer) {
+		System.out.println(customer);
 		return customerRepository.save(customer);
 		
+		
+	}
+	
+	@PutMapping(path = "/customers/{id}")
+	public Customer updateCustommer(@PathVariable Long id, @RequestBody Customer customer) {
+		customer.setId(id);
+		return customerRepository.save(customer);
 		
 	}
 }

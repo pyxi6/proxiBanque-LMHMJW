@@ -7,17 +7,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-
 public class Customer {
 	
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY )	
 	private Long id;
+	
 	private String prenom;
 	private String nom;
 	private String numTel;
+	
 	@Embedded
 	private Adresse adresse;
+	
 	public Long getId() {
 		return id;
 	}
@@ -62,7 +64,6 @@ public class Customer {
 	}
 	
 	public Customer(String prenom, String nom, String numTel, Adresse adresse) {
-		super();
 		this.prenom = prenom;
 		this.nom = nom;
 		this.numTel = numTel;
