@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Conseiller{
@@ -17,7 +20,12 @@ public class Conseiller{
 	@Embedded
 	private Personne personne;
 	
+	@ManyToOne
+	@JoinColumn(name="id_agence")
+	private Agence agence;
 	
+	@OneToMany(mappedBy = "conseiller")
+	private List<Customer> customers;
 	
 	public Conseiller() {
 	}

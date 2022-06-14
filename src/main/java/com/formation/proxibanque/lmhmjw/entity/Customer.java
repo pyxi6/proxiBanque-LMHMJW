@@ -2,11 +2,6 @@ package com.formation.proxibanque.lmhmjw.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 public class Customer {
@@ -23,8 +18,16 @@ public class Customer {
 	// relation by directionnel donc utiliser mappedBy,
 	// dans la classe compte le Customer est representer par  l'attribu customer
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
- private Collection<Compte> comptes;
-
+	private Collection<Compte> comptes;
+	
+	@ManyToOne
+	@JoinColumn(name="id_conseiller")
+	private Conseiller conseiller;
+	
+	@ManyToOne
+	@JoinColumn(name="id_agence")
+	private Agence agence;
+	
 	public Long getId() {
 		return id;
 	}

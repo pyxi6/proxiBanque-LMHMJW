@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Directeur{
@@ -16,17 +18,19 @@ public class Directeur{
 	@Embedded
 	private Personne personne;
 	
+	@OneToOne
+	@JoinColumn(name = "id_agence")
+	private Agence agence;
+	
 	public Directeur() {
 	}
 	
 	public Directeur(Long id, Personne personne) {
-		super();
 		this.id = id;
 		this.personne = personne;
 	}
 	
 	public Directeur(Personne personne) {
-		super();
 		this.personne = personne;
 	}
 	public Long getId() {
