@@ -15,6 +15,7 @@ import com.formation.proxibanque.lmhmjw.repository.ConseillerRepository;
 
 @RestController
 public class ConseillerRestController {
+	
 	private ConseillerRepository conseillerRepository;
 
 	public ConseillerRestController(ConseillerRepository conseillerRepository) {
@@ -25,10 +26,12 @@ public class ConseillerRestController {
 	public List<Conseiller> ListConseiller(){
 		return conseillerRepository.findAll();
 	}
+	
 	@GetMapping(path = "/conseillers/{id}")
 	public Conseiller getConseiller(@PathVariable Long id) {
 		return conseillerRepository.findById(id).get();
 	}
+	
 	@PostMapping(path = "/conseillers")
 	public Conseiller addConseiller(@RequestBody Conseiller conseiller) {
 		return conseillerRepository.save(conseiller);
