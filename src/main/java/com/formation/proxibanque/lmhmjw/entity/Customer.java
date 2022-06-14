@@ -2,6 +2,11 @@ package com.formation.proxibanque.lmhmjw.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Customer {
@@ -79,14 +84,11 @@ public class Customer {
 		this.adresse = adresse;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", numTel=" + numTel + ", adresse="
 				+ adresse + "]";
 	}
-
-
 
 
 }
