@@ -1,7 +1,9 @@
 package com.formation.proxibanque.lmhmjw.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +25,8 @@ public class Customer {
 	// relation by directionnel donc utiliser mappedBy,
 	// dans la classe compte le Customer est representer par  l'attribu customer
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
- private Collection<Compte> comptes;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // Ne serialise pas la liste des compte par json
+   private List<Compte> comptes;
 
 	public Long getId() {
 		return id;
@@ -56,24 +59,24 @@ public class Customer {
 		this.adresse = adresse;
 	}
 
-	public Customer(Long id, String prenom, String nom, String numTel, Adresse adresse) {
+	public List<Compte> getComptes() {
+		return comptes;
+	}
+
+	public void setComptes(List<Compte> comptes) {
+		this.comptes = comptes;
+	}
+
+	public Customer() {
+	}
+
+	public Customer(Long id, String prenom, String nom, String numTel, Adresse adresse, List<Compte> comptes) {
 		this.id = id;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.numTel = numTel;
 		this.adresse = adresse;
-
-	}
-
-	public Collection<Compte> getComptes() {
-		return comptes;
-	}
-
-	public void setComptes(Collection<Compte> comptes) {
 		this.comptes = comptes;
-	}
-
-	public Customer() {
 	}
 
 	public Customer(String prenom, String nom, String numTel, Adresse adresse) {
@@ -86,9 +89,13 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", numTel=" + numTel + ", adresse="
-				+ adresse + "]";
+		return "Customer{" +
+				"id=" + id +
+				", prenom='" + prenom + '\'' +
+				", nom='" + nom + '\'' +
+				", numTel='" + numTel + '\'' +
+				", adresse=" + adresse +
+				", comptes=" + comptes +
+				'}';
 	}
-
-
 }
