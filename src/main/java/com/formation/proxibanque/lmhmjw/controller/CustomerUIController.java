@@ -37,9 +37,11 @@ public class CustomerUIController {
 	}
 
 	@PostMapping("/customersWeb/addClient")
-	public Customer postCustomerForm(@ModelAttribute Customer customer) {
+	public String postCustomerForm(@ModelAttribute Customer customer) {
 		
-		return customerServiceImpl.saveCustomerService(customer);
+		customerServiceImpl.saveCustomerService(customer);
+		
+		return "listeClients";
 		
 	}
 

@@ -5,6 +5,7 @@
 <title>Ajout d'un client</title>
 </head>
 <body>
+<h2> Nouveau Client</h2>
 	<form action="/customersWeb/addClient" method="POST" th:object="${customer}">
 		Prénom: <input th:field="*{prenom}"  type="text" name="prenom"  /> <br /> 
 		Nom: <input th:field="*{nom}" type="text" name="nom" /> <br />
