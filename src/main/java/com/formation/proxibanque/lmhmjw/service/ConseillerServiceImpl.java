@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.formation.proxibanque.lmhmjw.entity.Conseiller;
+import com.formation.proxibanque.lmhmjw.entity.Customer;
 import com.formation.proxibanque.lmhmjw.repository.ConseillerRepository;
 
 @Service

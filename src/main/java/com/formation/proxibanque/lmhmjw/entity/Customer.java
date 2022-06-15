@@ -23,14 +23,14 @@ public class Customer {
 	
 //	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 //	private Collection<Compte> comptes;
-//	
-//	@ManyToOne
-//	@JoinColumn(name="id_conseiller")
-//	private Conseiller conseiller;
-//	
-//	@ManyToOne
-//	@JoinColumn(name="id_agence")
-//	private Agence agence;
+	
+	@ManyToOne
+	@JoinColumn(name="id_conseiller")
+	private Conseiller conseiller;
+	
+	@ManyToOne
+	@JoinColumn(name="id_agence")
+	private Agence agence;
 	
 	public Customer() {
 
@@ -57,6 +57,19 @@ public class Customer {
 		this.nom = nom;
 		this.numTel = numTel;
 		this.adresse = adresse;
+	}
+	
+	
+
+public Customer(Long id, String prenom, String nom, String numTel, Adresse adresse, Conseiller conseiller,
+			Agence agence) {
+		this.id = id;
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTel = numTel;
+		this.adresse = adresse;
+		this.conseiller = conseiller;
+		this.agence = agence;
 	}
 
 //	public Customer(String prenom, String nom, String numTel, Adresse adresse, Collection<Compte> comptes,
@@ -109,19 +122,19 @@ public class Customer {
 //	public void setComptes(Collection<Compte> comptes) {
 //		this.comptes = comptes;
 //	}
-//	
-//	public Conseiller getConseiller() {
-//		return conseiller;
-//	}
-//	public void setConseiller(Conseiller conseiller) {
-//		this.conseiller = conseiller;
-//	}
-//	public Agence getAgence() {
-//		return agence;
-//	}
-//	public void setAgence(Agence agence) {
-//		this.agence = agence;
-//	}
+	
+	public Conseiller getConseiller() {
+		return conseiller;
+	}
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
+	public Agence getAgence() {
+		return agence;
+	}
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
 	
 	@Override
 	public String toString() {
