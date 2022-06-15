@@ -3,17 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
-<div th:switch="${customers}">
+<div class="table" th:switch="${customers}">
     <h2 th:case="null">No persons yet!</h2>
         <div th:case="*">
             <h2>clients</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Telephone</th>
+                        <th>Adresse</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -23,6 +26,7 @@
                     <td th:text="${customer.prenom}"></td>
                     <td th:text="${customer.nom}"></td>
                     <td th:text="${customer.numTel}"></td>
+                    <td th:text="${customer.adresse.numEtRue}+ ' ' + ${customer.adresse.codePostal} + ' '+ ${customer.adresse.ville}"></td>
                     <td><a th:href="@{/edit/{id}(id=${customer.id})}">Edit</a></td>
                     <td><a th:href="@{/delete/{id}(id=${customer.id})}">Delete</a></td>
                 </tr>
