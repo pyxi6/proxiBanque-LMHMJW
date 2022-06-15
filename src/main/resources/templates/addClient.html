@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr" xnlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Ajout d'un client</title>
+</head>
+<body>
+	<form action="/customersWeb/addClient" method="POST" th:object="${customer}">
+		Prénom: <input th:field="*{prenom}"  type="text" name="prenom"  /> <br /> 
+		Nom: <input th:field="*{nom}" type="text" name="nom" /> <br />
+		N° de téléphone: <input th:field="*{numTel}" type="text" name="numTel" /> <br/>
+		
+		<!--    Ce bouton m'envoie vers la methode addClient du ClientController-->
+		<input type="submit" value="Ajouter" />
+	</form>
+	
+
+</body>
+</html>

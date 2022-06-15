@@ -45,7 +45,6 @@ public class CustomerRestController {
 	
 	@PostMapping(path = "/customers")
 	public Customer saveCustomer(@RequestBody Customer customer) {
-		System.out.println(customer);
 		return customerServiceImpl.saveCustomerService(customer);
 		
 		

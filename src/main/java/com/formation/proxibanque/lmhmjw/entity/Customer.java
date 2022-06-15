@@ -83,7 +83,15 @@ public class Customer {
 		this.numTel = numTel;
 		this.adresse = adresse;
 	}
+	
+	
 
+	public Customer(String prenom, String nom, String numTel) {
+		super();
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTel = numTel;
+	}
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", numTel=" + numTel + ", adresse="
