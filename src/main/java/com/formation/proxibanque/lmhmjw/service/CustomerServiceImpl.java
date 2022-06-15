@@ -20,7 +20,6 @@ public class CustomerServiceImpl {
 	@Autowired
 	private CustomerRepository customerRepository;
 	
-	private ConseillerRepository conseillerRepository;
 
 	public CustomerServiceImpl(CustomerRepository customerRepository) {
 		this.customerRepository = customerRepository;
