@@ -2,11 +2,6 @@ package com.formation.proxibanque.lmhmjw.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
 public class Customer {
@@ -23,7 +18,53 @@ public class Customer {
 	// relation by directionnel donc utiliser mappedBy,
 	// dans la classe compte le Customer est representer par  l'attribu customer
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
- private Collection<Compte> comptes;
+	private Collection<Compte> comptes;
+	
+	@ManyToOne
+	@JoinColumn(name="id_conseiller")
+	private Conseiller conseiller;
+	
+	@ManyToOne
+	@JoinColumn(name="id_agence")
+	private Agence agence;
+	
+	public Customer() {
+
+	}
+	
+	public Customer(String prenom, String nom, String numTel) {
+		super();
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTel = numTel;
+	}
+	
+	public Customer(Long id, String prenom, String nom, String numTel, Adresse adresse) {
+		this.id = id;
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTel = numTel;
+		this.adresse = adresse;
+	}
+	
+	public Customer(String prenom, String nom, String numTel, Adresse adresse) {
+		super();
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTel = numTel;
+		this.adresse = adresse;
+	}
+
+	public Customer(String prenom, String nom, String numTel, Adresse adresse, Collection<Compte> comptes,
+			Conseiller conseiller, Agence agence) {
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTel = numTel;
+		this.adresse = adresse;
+		this.comptes = comptes;
+		this.conseiller = conseiller;
+		this.agence = agence;
+	}
 
 	public Long getId() {
 		return id;
@@ -56,15 +97,6 @@ public class Customer {
 		this.adresse = adresse;
 	}
 
-	public Customer(Long id, String prenom, String nom, String numTel, Adresse adresse) {
-		this.id = id;
-		this.prenom = prenom;
-		this.nom = nom;
-		this.numTel = numTel;
-		this.adresse = adresse;
-
-	}
-
 	public Collection<Compte> getComptes() {
 		return comptes;
 	}
@@ -72,26 +104,21 @@ public class Customer {
 	public void setComptes(Collection<Compte> comptes) {
 		this.comptes = comptes;
 	}
-
-	public Customer() {
+	
+	public Conseiller getConseiller() {
+		return conseiller;
 	}
-
-	public Customer(String prenom, String nom, String numTel, Adresse adresse) {
-		super();
-		this.prenom = prenom;
-		this.nom = nom;
-		this.numTel = numTel;
-		this.adresse = adresse;
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
+	}
+	public Agence getAgence() {
+		return agence;
+	}
+	public void setAgence(Agence agence) {
+		this.agence = agence;
 	}
 	
 	
-
-	public Customer(String prenom, String nom, String numTel) {
-		super();
-		this.prenom = prenom;
-		this.nom = nom;
-		this.numTel = numTel;
-	}
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", numTel=" + numTel + ", adresse="
