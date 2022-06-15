@@ -24,6 +24,7 @@ public class ConseillerServiceImpl {
 		return conseillerRepository.findAll();
 	}
 	
+		
 	public Conseiller findConseillerById(Long id) {
 		return conseillerRepository.findById(id).get();
 	}
