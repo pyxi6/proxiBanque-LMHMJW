@@ -1,7 +1,10 @@
 package com.formation.proxibanque.lmhmjw.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.Collection;
+
 
 @Entity
 public class Customer {
@@ -67,6 +70,7 @@ public class Customer {
 //		this.agence = agence;
 //	}
 
+
 	public Long getId() {
 		return id;
 	}
@@ -119,12 +123,14 @@ public class Customer {
 //		this.agence = agence;
 //	}
 	
-	
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", numTel=" + numTel + ", adresse="
-				+ adresse + "]";
+		return "Customer{" +
+				"id=" + id +
+				", prenom='" + prenom + '\'' +
+				", nom='" + nom + '\'' +
+				", numTel='" + numTel + '\'' +
+				", adresse=" + adresse +
+				'}';
 	}
-
-
 }

@@ -1,18 +1,35 @@
 package com.formation.proxibanque.lmhmjw.service;
 
-import com.formation.proxibanque.lmhmjw.entity.Compte;
-import com.formation.proxibanque.lmhmjw.entity.Opperation;
-import org.springframework.data.domain.Page;
 
+import com.formation.proxibanque.lmhmjw.entity.Compte;
+import com.formation.proxibanque.lmhmjw.entity.CompteCourant;
+import com.formation.proxibanque.lmhmjw.entity.CompteEpargne;
+
+
+import java.util.List;
+
+// on definit le besoin fonctionnel
 public interface CompteService {
 
-    public Compte consulterCompte(Long codeCpte);
-    public void versement (Long codeCpte, double montant);
-    public  void retrait(Long codeCpte, double montant);
+    // ne pas metre "public" dans l'interface
+    //Customer saveCustomer (Customer customer);
+     // List<Customer> listCustomers();
 
-    // methode pour effectuer un virement
-    // en pararm l'Id du compte qui effect le vireù, celui qui le recoi, le montant du virement
-     public void virement(Long codeSource, Long codeDestination, double montant);
+     CompteCourant saveCompteCourrant (double initialSolde, double decouvert, long customerID);
+     CompteEpargne saveCompteEpargne (double initialSolde, double taux, long customerID);
+     Compte getCompte(String compteId);
 
-     public Page<Opperation> listOpperation (Long CodeCpte, int page, int size);
+     List<Compte> listComptes();
+
+     Compte updateCompte(String compteId, Compte compte);
+
+     void deleatCompte (String compteId);
+
+     void debiter(String compteId, double montant, String description);
+     void crediter(String compteId, double montant, String description);
+
+     void virement(String compteIdSource, String compteIdDestinataire, double montant);
+
+
+
 }

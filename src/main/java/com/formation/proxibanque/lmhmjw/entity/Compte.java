@@ -1,54 +1,61 @@
 package com.formation.proxibanque.lmhmjw.entity;
 
+import com.formation.proxibanque.lmhmjw.entity.enums.CompteStatus;
 import com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 // comme y a l'heritage INheritance
 // Single_Table une table pour tous les herarchie de classe, probleme lorsqu'il ya bcq de collon null
 // une seul table compte ou on met tout
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "TypeCompte",
-discriminatorType = DiscriminatorType.STRING, length = 12)
-public abstract class Compte {
+@Inheritance(strategy = InheritanceType.JOINED)
+/*@DiscriminatorColumn(name = "TypeCompte", length = 15) */// nom de la colone type avec nom caractere <12
+public  class Compte {
 
-    @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //incrim valeur +1
-    private Long code;
+    @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
     private double solde;
-    private Date dateCreation;
+    private LocalDate dateCreation;
+
+	@Enumerated(EnumType.STRING) // Enregistre le type au format string en base
+	private CompteStatus status;
+
+
 	//compte lié à un customer
 	@ManyToOne
 	@JoinColumn(name = "CODE_CLIENT") // nom de la jointure, cle etrangere sinon c' customer
 	private Customer customer;
 
-	@OneToMany(mappedBy = "compte")
-	private Collection<Opperation> opperations;
-    @Enumerated(EnumType.STRING) // dans la base le type va etre stocker sous forme de string
-                                // Ordinaire c'est sous forme numeriques
+	@OneToMany(mappedBy = "compte", fetch = FetchType.LAZY)
+	private List<Opperation> opperations;
+    @Enumerated(EnumType.STRING) // dans la base le type va etre stocker sous forme de string  // Ordinaire c'est sous forme numeriques
     private TypeCompte type;
 
 	public Compte() {
 	}
 
-	public Compte(Long code, double solde, Date dateCreation, TypeCompte type, Customer customer) {
+	public Compte( double solde, LocalDate dateCreation, CompteStatus status,
+				  Customer customer, List<Opperation> opperations, TypeCompte type) {
 
-		this.code = code;
 		this.solde = solde;
 		this.dateCreation = dateCreation;
-		this.type = type;
+		this.status = status;
 		this.customer = customer;
+		this.opperations = opperations;
+		this.type = type;
 	}
 
-	public Long getCode() {
-		return code;
+	public String getId() {
+		return id;
 	}
 
-	public void setCode(Long code) {
-		this.code = code;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public double getSolde() {
@@ -59,20 +66,20 @@ public abstract class Compte {
 		this.solde = solde;
 	}
 
-	public Date getDateCreation() {
+	public LocalDate getDateCreation() {
 		return dateCreation;
 	}
 
-	public void setDateCreation(Date dateCreation) {
+	public void setDateCreation(LocalDate dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 
-	public TypeCompte getType() {
-		return type;
+	public CompteStatus getStatus() {
+		return status;
 	}
 
-	public void setType(TypeCompte type) {
-		this.type = type;
+	public void setStatus(CompteStatus status) {
+		this.status = status;
 	}
 
 	public Customer getCustomer() {
@@ -83,17 +90,32 @@ public abstract class Compte {
 		this.customer = customer;
 	}
 
-	public Collection<Opperation> getOpperations() {
+	public List<Opperation> getOpperations() {
 		return opperations;
 	}
 
-	public void setOpperations(Collection<Opperation> opperations) {
+	public void setOpperations(List<Opperation> opperations) {
 		this.opperations = opperations;
+	}
+
+	public TypeCompte getType() {
+		return type;
+	}
+
+	public void setType(TypeCompte type) {
+		this.type = type;
 	}
 
 	@Override
 	public String toString() {
-		return "Compte [code=" + code + ", solde=" + solde + ", dateCreation=" + dateCreation + ", type=" + type + "]";
+		return "Compte{" +
+				"id='" + id + '\'' +
+				", solde=" + solde +
+				", dateCreation=" + dateCreation +
+				", status=" + status +
+				", customer=" + customer +
+				", opperations=" + opperations +
+				", type=" + type +
+				'}';
 	}
-
 }

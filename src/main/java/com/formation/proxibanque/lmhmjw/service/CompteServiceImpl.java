@@ -1,61 +1,162 @@
 package com.formation.proxibanque.lmhmjw.service;
 
-
-import com.formation.proxibanque.lmhmjw.entity.Compte;
-import com.formation.proxibanque.lmhmjw.entity.Opperation;
-import com.formation.proxibanque.lmhmjw.repository.CompteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import com.formation.proxibanque.lmhmjw.entity.*;
+import com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte;
+import com.formation.proxibanque.lmhmjw.entity.enums.TypeOpperation;
+import com.formation.proxibanque.lmhmjw.repository.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 
-// classe qui implement l'interface CompteService
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
 @Service
-@Transactional  // la methode est transactionnel
-public class CompteServiceImpl implements CompteService {
+@Transactional
+public class CompteServiceImpl implements CompteService{
 
-    // injection des dependance par constructeur
-    // avec Autowired fait le taff aussi
-    @Autowired
+
+    private CustomerRepository customerRepository;
     private CompteRepository compteRepository;
 
+    private CompteCourantRepository compteCourantRepository;
 
-    @Override
-    public Compte consulterCompte(Long codeCpte) {
-        return null;
+    private CompteEpargneRepository compteEpargneRepository;
+    private OpperationRepository opperationRepository;
+
+    public CompteServiceImpl(CustomerRepository customerRepository,
+                             CompteRepository compteRepository,
+                             CompteCourantRepository compteCourantRepository,
+                             CompteEpargneRepository compteEpargneRepository,
+                             OpperationRepository opperationRepository) {
+
+        this.customerRepository = customerRepository;
+        this.compteRepository = compteRepository;
+        this.compteCourantRepository = compteCourantRepository;
+        this.compteEpargneRepository = compteEpargneRepository;
+        this.opperationRepository = opperationRepository;
+
+
+
     }
 
     @Override
-    public void versement(Long codeCpte, double montant) {
+    public CompteCourant saveCompteCourrant(double initialSolde, double decouvert, long customerID) {
+
+        //Verification de l'existance du client:
+        Customer customer=customerRepository.findById(customerID).orElse(null);
+        if(customer==null){
+            throw new RuntimeException("Customer not Found");
+        }
+
+        CompteCourant compteCourant= new CompteCourant();
+
+
+      /*  compteCourant.setId(UUID.randomUUID().toString());*/
+        compteCourant.setDateCreation(LocalDate.now());
+        compteCourant.setSolde(initialSolde);
+        compteCourant.setDecouvert(decouvert);
+        compteCourant.setCustomer(customer);
+
+        CompteCourant savedCompteCourant= compteCourantRepository.save(compteCourant);
+        return savedCompteCourant;
+    }
+
+    @Override
+    public CompteEpargne saveCompteEpargne(double initialSolde, double taux, long customerID) {
+        //Verification de l'existance du client:
+        Customer customer=customerRepository.findById(customerID).orElse(null);
+        if(customer==null){
+            throw new RuntimeException("Le client n'existe pas ");
+        }
+
+        CompteEpargne compteEpargne= new CompteEpargne();
+
+        /*compteEpargne.setId(UUID.randomUUID().toString());*/
+        compteEpargne.setDateCreation(LocalDate.now());
+        compteEpargne.setSolde(initialSolde);
+        compteEpargne.setTaux(taux);
+        compteEpargne.setCustomer(customer);
+
+        CompteEpargne savedCompteEpargne=compteEpargneRepository.save(compteEpargne);
+        return savedCompteEpargne;
+    }
+
+    @Override
+    public List<Compte> listComptes() {
+        return compteRepository.findAll();
+    }
+
+    @Override
+    public Compte getCompte(String compteId) {
+
+        return compteRepository.findById(compteId).get();
+
+        /*Compte compte = compteRepository.findById(compteId).
+                orElseThrow(()->new RuntimeException("Compte n'existe pas"));
+        return compte;*/
+    }
+
+
+
+    @Override
+    public Compte updateCompte(String compteId, Compte compte) {
+        compte.setId(compteId);
+        return compteRepository.save(compte);
+    }
+
+
+
+    @Override
+    public void deleatCompte(String compteId) {
+        compteRepository.deleteById(compteId);
+    }
+
+    @Override
+    public void debiter(String compteId, double montant, String description) {
+
+        Compte compte= getCompte(compteId);
+        if(compte.getSolde()<montant)
+            throw new RuntimeException("Solde insuffisant");
+
+        Opperation opperation = new Opperation();
+        opperation.setTypeOpperation(TypeOpperation.DEBIT);
+        opperation.setMontant(montant);
+        opperation.setDescription(description);
+        opperation.setDateOperation(new Date());
+        opperation.setCompte(compte);
+
+        opperationRepository.save(opperation);
+        compte.setSolde(compte.getSolde()-montant);
+        compteRepository.save(compte);
 
     }
 
     @Override
-    public void retrait(Long codeCpte, double montant) {
+    public void crediter(String compteId, double montant, String description) {
+
+        Compte compte= getCompte(compteId);
+
+        Opperation opperation = new Opperation();
+        opperation.setTypeOpperation(TypeOpperation.CREDIT);
+        opperation.setMontant(montant);
+        opperation.setDescription(description);
+        opperation.setDateOperation(new Date());
+        opperation.setCompte(compte);
+
+        opperationRepository.save(opperation);
+        compte.setSolde(compte.getSolde()+montant);
+        compteRepository.save(compte);
 
     }
 
     @Override
-    public void virement(Long codeSource, Long codeDestination, double montant) {
-        // acce au compte qui envoi et à celui qui recoi
-        Compte compteEmeteur = compteRepository.getById(codeSource);
-        Compte compteDestinatere = compteRepository.getById(codeDestination);
+    public void virement(String compteIdSource, String compteIdDestinataire, double montant) {
 
-        // operation solde compteEmeteur - montant
-        compteEmeteur.setSolde(compteEmeteur.getSolde() - montant);
+        debiter(compteIdSource,montant, "Transfer à "+compteIdDestinataire);
+        crediter(compteIdDestinataire, montant, "Transfer depuis"+compteIdSource);
 
-        //ajout du montant au compte destinataire
-        compteDestinatere.setSolde(compteDestinatere.getSolde() + montant);
-
-        // normalement pas besoin car on est en transactionnel
-        // mise à jour des 2 comptes
-        compteRepository.save(compteEmeteur);
-        compteRepository.save(compteDestinatere);
-    }
-
-    @Override
-    public Page<Opperation> listOpperation(Long CodeCpte, int page, int size) {
-        return null;
     }
 }

@@ -1,58 +1,91 @@
 package com.formation.proxibanque.lmhmjw.controller;
 
-import com.formation.proxibanque.lmhmjw.entity.Compte;
+import com.formation.proxibanque.lmhmjw.dto.VirementRequestDTO;
+import com.formation.proxibanque.lmhmjw.entity.*;
+import com.formation.proxibanque.lmhmjw.repository.CompteCourantRepository;
+import com.formation.proxibanque.lmhmjw.repository.CompteEpargneRepository;
 import com.formation.proxibanque.lmhmjw.repository.CompteRepository;
+import com.formation.proxibanque.lmhmjw.service.CompteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @RestController
 public class CompteRestController {
 
+
     // on a besoin d'accedez a la base
     // eviter @Autowaired deprciller
-    private CompteRepository compteRepository;	
 
-    // Faut generer un constructeur qui contient un param
-    // injection via le constructeur (bonne pratique)
-    public CompteRestController(CompteRepository compteRepository) {
-        this.compteRepository = compteRepository;
+    @Autowired
+    private CompteRepository compteRepository;
+
+    @Autowired
+    private CompteCourantRepository compteCourantRepository;
+
+    @Autowired
+    private CompteEpargneRepository compteEpargneRepository;
+
+     private CompteService compteService;
+     @PostConstruct
+public void dataloder(){
+    List<CompteCourant> listeCompteCourant= List.of(
+            new CompteCourant(1000),
+            new CompteCourant(29899),
+            new CompteCourant(98));
+
+    compteCourantRepository.saveAll(listeCompteCourant);
+
+}
+
+
+    public CompteRestController(CompteService compteService) {
+        this.compteService = compteService;
     }
 
-    // Creation des differentes methodes qui compose le CRUD
 
-    // liste de tous les comptes acce en Get
     @GetMapping(path = "/comptes")
-    public List<Compte> listComptes(){
-        return compteRepository.findAll();
-    };
+    public List<Compte> ListComptes(){
+        return compteService.listComptes();
+    }
 
-    // Consulter un compte via l'ID
-    @GetMapping(path="/comptes/{id}")
-    //@PathVariable veut dire que le {id} est affecter à long id
-    public Compte getCompte(@PathVariable Long id){
-        return compteRepository.findById(id).get();
-    };
+    @GetMapping(path = "/comptes/{compteId}")
+    public Compte getCompte(@PathVariable String compteId){
+    return compteService.getCompte(compteId);
+    }
 
-    // Ajout compte via un post
-    // le compte sont des donnees Json qui viennent du corp de la requet -> @RequestBody
-    @PostMapping(path = "/comptes")
-    public Compte save(@RequestBody Compte compte){
-      return compteRepository.save(compte);
-    };
+    @PostMapping(path = "/comptes/courant")
+    public CompteCourant saveCompteCourant(@RequestBody CompteCourant compteCourant){
+        return compteCourantRepository.save(compteCourant);
+    }
 
-    // Update d'un compte via put
-    @PutMapping(path = "/comptes/{code}")
-    public Compte update(@PathVariable Long code ,@RequestBody Compte compte){
-        compte.setCode(code);
+    @PostMapping(path = "/comptes/epargne")
+    public CompteEpargne saveCompteEpargne(@RequestBody CompteEpargne compteEpargne){
+        System.out.println("------------------------------------");
+        System.out.println("#####################################");
+        System.out.println("------------------------------------");
+        System.out.println(compteEpargne);
+        return compteEpargneRepository.save(compteEpargne);
+    }
+
+
+    @PutMapping(path = "/comptes/{countId}")
+    public Compte updateCompte(@PathVariable String countId,@RequestBody Compte compte ){
+        compte.setId(countId);
         return compteRepository.save(compte);
-    };
+    }
 
-    //Suppretion d'un compte avec Delete
-    @DeleteMapping(path = "/comptes/{code}")
-    public void delete(@PathVariable Long code){
-        compteRepository.deleteById(code);
-    };
+    @DeleteMapping(path = "/comptes/{countId}")
+    public void deleteCompte(String countId){
+        compteRepository.deleteById(countId);
+    }
 
+    @PutMapping(path = "/comptes/virement")
+    public void virement(@RequestBody VirementRequestDTO requestDTO){
+        compteService.virement(requestDTO.getCodeSource(),
+                requestDTO.getCodeDestination(), requestDTO.getMontant() );
+    }
 
 }
