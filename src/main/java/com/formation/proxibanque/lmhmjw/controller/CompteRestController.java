@@ -2,6 +2,7 @@ package com.formation.proxibanque.lmhmjw.controller;
 
 import com.formation.proxibanque.lmhmjw.dto.VirementRequestDTO;
 import com.formation.proxibanque.lmhmjw.entity.*;
+import com.formation.proxibanque.lmhmjw.entity.enums.CompteStatus;
 import com.formation.proxibanque.lmhmjw.repository.CompteCourantRepository;
 import com.formation.proxibanque.lmhmjw.repository.CompteEpargneRepository;
 import com.formation.proxibanque.lmhmjw.repository.CompteRepository;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -34,7 +37,8 @@ public void dataloder(){
     List<CompteCourant> listeCompteCourant= List.of(
             new CompteCourant(1000),
             new CompteCourant(29899),
-            new CompteCourant(98));
+            new CompteCourant(122,LocalDate.now(),CompteStatus.ACTIVER));
+    
 
     compteCourantRepository.saveAll(listeCompteCourant);
 
@@ -73,7 +77,7 @@ public void dataloder(){
 
     @PutMapping(path = "/comptes/{countId}")
     public Compte updateCompte(@PathVariable String countId,@RequestBody Compte compte ){
-        compte.setId(countId);
+//        compte.setId(countId);
         return compteRepository.save(compte);
     }
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.formation.proxibanque.lmhmjw.entity.Conseiller;
 import com.formation.proxibanque.lmhmjw.entity.Customer;
+import com.formation.proxibanque.lmhmjw.repository.ConseillerRepository;
 import com.formation.proxibanque.lmhmjw.repository.CustomerRepository;
 
 @Service
@@ -18,6 +19,8 @@ public class CustomerServiceImpl {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	private ConseillerRepository conseillerRepository;
 
 	public CustomerServiceImpl(CustomerRepository customerRepository) {
 		this.customerRepository = customerRepository;
@@ -26,21 +29,6 @@ public class CustomerServiceImpl {
 	public List<Customer> listAllCustomersService(){
 		return customerRepository.findAll();
 	}
-	
-//	public List<Customer> listCustomersByConseillerService(Long id){
-//		List<Customer> customersConseiller = new ArrayList<>();
-//		List<Customer> customers = new ArrayList<>();
-//		customers = customerRepository.findAll();
-//		for (Customer customer : customers) {
-//			if(customer.getConseiller().getId().equals(id)) {
-//				customersConseiller.add(customer);
-//			}
-//			
-//		}
-//		return customersConseiller;
-//							
-//			
-//	}
 	
 	
 	public Customer getCustomerByIdService(Long id) {

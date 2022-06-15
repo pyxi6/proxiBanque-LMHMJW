@@ -34,11 +34,6 @@ public class CustomerRestController {
 		return customerServiceImpl.listAllCustomersService();
 	}
 	
-//	@GetMapping(path = "/customers/{id}")
-//	public List<Customer> listCustomerByConseiller(@PathVariable Long id){
-//		return customerServiceImpl.listCustomersByConseillerService(id);
-//		
-//	}
 	
 	@GetMapping(path = "/customers/{id}")
 	public Customer getCustomerById(@PathVariable Long id) {

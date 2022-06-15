@@ -25,6 +25,10 @@ public class ConseillerServiceImpl {
 		return conseillerRepository.findAll();
 	}
 	
+	public List<Customer> ListCustomerByConseiller(Long id){
+		return conseillerRepository.findById(id).get().getCustomers();
+
+	}
 		
 	public Conseiller findConseillerById(Long id) {
 		return conseillerRepository.findById(id).get();

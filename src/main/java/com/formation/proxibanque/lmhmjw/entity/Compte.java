@@ -18,7 +18,7 @@ public  class Compte {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private double solde;
     private LocalDate dateCreation;
 
@@ -49,12 +49,21 @@ public  class Compte {
 		this.opperations = opperations;
 		this.type = type;
 	}
+	
+	
 
-	public String getId() {
+	public Compte(double solde, LocalDate dateCreation, CompteStatus status) {
+		super();
+		this.solde = solde;
+		this.dateCreation = dateCreation;
+		this.status = status;
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

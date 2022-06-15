@@ -27,7 +27,11 @@ public class CompteCourant  extends  Compte{
         this.decouvert = decouvert;
     }
 
-    public double getDecouvert() {
+    public CompteCourant(double i, LocalDate now, CompteStatus activer) {
+    	super(i, now, activer);
+    }
+
+	public double getDecouvert() {
         return decouvert;
     }
 

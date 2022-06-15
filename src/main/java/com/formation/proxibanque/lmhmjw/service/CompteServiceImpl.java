@@ -103,7 +103,7 @@ public class CompteServiceImpl implements CompteService{
 
     @Override
     public Compte updateCompte(String compteId, Compte compte) {
-        compte.setId(compteId);
+//        compte.setId(compteId);
         return compteRepository.save(compte);
     }
 
