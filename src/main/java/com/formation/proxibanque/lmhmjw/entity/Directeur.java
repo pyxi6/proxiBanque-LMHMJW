@@ -33,6 +33,13 @@ public class Directeur{
 	public Directeur(Personne personne) {
 		this.personne = personne;
 	}
+	
+	
+	public Directeur(Personne personne, Agence agence) {
+		this.personne = personne;
+		this.agence = agence;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -46,5 +53,19 @@ public class Directeur{
 		this.personne = personne;
 	}
 
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
+ 
+	@Override
+	public String toString() {
+		return "Directeur [id=" + id + ", personne=" + personne + "]";
+	}
+
+	
 	
 }

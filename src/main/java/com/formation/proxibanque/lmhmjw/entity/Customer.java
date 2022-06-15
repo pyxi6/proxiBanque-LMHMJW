@@ -28,6 +28,37 @@ public class Customer {
 	@JoinColumn(name="id_agence")
 	private Agence agence;
 	
+	public Customer() {
+
+	}
+	
+	public Customer(Long id, String prenom, String nom, String numTel, Adresse adresse) {
+		this.id = id;
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTel = numTel;
+		this.adresse = adresse;
+	}
+	
+	public Customer(String prenom, String nom, String numTel, Adresse adresse) {
+		super();
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTel = numTel;
+		this.adresse = adresse;
+	}
+
+	public Customer(String prenom, String nom, String numTel, Adresse adresse, Collection<Compte> comptes,
+			Conseiller conseiller, Agence agence) {
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTel = numTel;
+		this.adresse = adresse;
+		this.comptes = comptes;
+		this.conseiller = conseiller;
+		this.agence = agence;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -59,15 +90,6 @@ public class Customer {
 		this.adresse = adresse;
 	}
 
-	public Customer(Long id, String prenom, String nom, String numTel, Adresse adresse) {
-		this.id = id;
-		this.prenom = prenom;
-		this.nom = nom;
-		this.numTel = numTel;
-		this.adresse = adresse;
-
-	}
-
 	public Collection<Compte> getComptes() {
 		return comptes;
 	}
@@ -75,18 +97,19 @@ public class Customer {
 	public void setComptes(Collection<Compte> comptes) {
 		this.comptes = comptes;
 	}
-
-	public Customer() {
+	
+	public Conseiller getConseiller() {
+		return conseiller;
 	}
-
-	public Customer(String prenom, String nom, String numTel, Adresse adresse) {
-		super();
-		this.prenom = prenom;
-		this.nom = nom;
-		this.numTel = numTel;
-		this.adresse = adresse;
+	public void setConseiller(Conseiller conseiller) {
+		this.conseiller = conseiller;
 	}
-
+	public Agence getAgence() {
+		return agence;
+	}
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", numTel=" + numTel + ", adresse="

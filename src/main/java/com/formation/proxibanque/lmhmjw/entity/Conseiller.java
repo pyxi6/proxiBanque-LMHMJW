@@ -34,12 +34,17 @@ public class Conseiller{
 		this.id = id;
 		this.personne = personne;
 	}
-	
-	
 
 	public Conseiller(Personne personne) {
 		this.personne = personne;
 	}
+
+	public Conseiller(Personne personne, Agence agence, List<Customer> customers) {
+		this.personne = personne;
+		this.agence = agence;
+		this.customers = customers;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -55,6 +60,27 @@ public class Conseiller{
 
 	public void setPersonne(Personne personne) {
 		this.personne = personne;
+	}
+
+	public Agence getAgence() {
+		return agence;
+	}
+
+	public void setAgence(Agence agence) {
+		this.agence = agence;
+	}
+
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
+
+	@Override
+	public String toString() {
+		return "Conseiller [id=" + id + ", personne=" + personne + "]";
 	}
 	
 	
