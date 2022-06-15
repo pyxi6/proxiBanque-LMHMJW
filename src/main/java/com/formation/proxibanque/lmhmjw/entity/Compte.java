@@ -19,6 +19,7 @@ public  class Compte {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String numCompte;
     private double solde;
     private LocalDate dateCreation;
 
@@ -39,25 +40,21 @@ public  class Compte {
 	public Compte() {
 	}
 
-	public Compte( double solde, LocalDate dateCreation, CompteStatus status,
-				  Customer customer, List<Opperation> opperations, TypeCompte type) {
 
-		this.solde = solde;
-		this.dateCreation = dateCreation;
-		this.status = status;
-		this.customer = customer;
-		this.opperations = opperations;
-		this.type = type;
-	}
 	
 	
 
-	public Compte(double solde, LocalDate dateCreation, CompteStatus status) {
+	public Compte(String numCompte, double solde, LocalDate dateCreation, CompteStatus status) {
 		super();
+		this.numCompte = numCompte;
 		this.solde = solde;
 		this.dateCreation = dateCreation;
 		this.status = status;
 	}
+
+
+
+
 
 	public Long getId() {
 		return id;
@@ -114,17 +111,28 @@ public  class Compte {
 	public void setType(TypeCompte type) {
 		this.type = type;
 	}
+	
+
+	public String getNumCompte() {
+		return numCompte;
+	}
+
+	public void setNumCompte(String numCompte) {
+		this.numCompte = numCompte;
+	}
+
+
+
+
 
 	@Override
 	public String toString() {
-		return "Compte{" +
-				"id='" + id + '\'' +
-				", solde=" + solde +
-				", dateCreation=" + dateCreation +
-				", status=" + status +
-				", customer=" + customer +
-				", opperations=" + opperations +
-				", type=" + type +
-				'}';
+		return "Compte [id=" + id + ", numCompte=" + numCompte + ", solde=" + solde + ", dateCreation=" + dateCreation
+				+ ", status=" + status + ", customer=" + customer + ", opperations=" + opperations + ", type=" + type
+				+ "]";
 	}
+	
+	
+
+
 }

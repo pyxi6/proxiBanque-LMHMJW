@@ -32,14 +32,17 @@ public class CompteRestController {
     private CompteEpargneRepository compteEpargneRepository;
 
      private CompteService compteService;
+     
      @PostConstruct
 public void dataloder(){
     List<CompteCourant> listeCompteCourant= List.of(
-            new CompteCourant(1000),
-            new CompteCourant(29899),
-            new CompteCourant(122,LocalDate.now(),CompteStatus.ACTIVER));
-    
+            new CompteCourant("A1200", 1200, LocalDate.now(),CompteStatus.ACTIVER,1000),
+            new CompteCourant("A1210", 130, LocalDate.now(),CompteStatus.SUPPRIMER,1000),
+            new CompteCourant("A1219", 13000, LocalDate.now(),CompteStatus.BLOQUER,1000)
 
+
+    		);
+           
     compteCourantRepository.saveAll(listeCompteCourant);
 
 }

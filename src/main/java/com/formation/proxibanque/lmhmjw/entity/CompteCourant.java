@@ -21,15 +21,13 @@ public class CompteCourant  extends  Compte{
     public CompteCourant(double decouvert) {
         this.decouvert = decouvert;
     }
+    
 
-    public CompteCourant( double solde, LocalDate dateCreation, CompteStatus status, Customer customer, List<Opperation> opperations, TypeCompte type, double decouvert) {
-        super( solde, dateCreation, status, customer, opperations, type);
-        this.decouvert = decouvert;
-    }
-
-    public CompteCourant(double i, LocalDate now, CompteStatus activer) {
-    	super(i, now, activer);
-    }
+	public CompteCourant(String numCompte, double solde, LocalDate dateCreation, CompteStatus status,
+			double decouvert) {
+		super(numCompte, solde, dateCreation, status);
+		this.decouvert = decouvert;
+	}
 
 	public double getDecouvert() {
         return decouvert;

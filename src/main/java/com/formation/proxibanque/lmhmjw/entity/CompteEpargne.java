@@ -18,13 +18,15 @@ public class CompteEpargne extends Compte{
 
     public CompteEpargne() { };
 
-    public CompteEpargne( double solde, LocalDate dateCreation, CompteStatus status, Customer customer,
-                         List<Opperation> opperations, TypeCompte type, double taux) {
-        super( solde, dateCreation, status, customer, opperations, type);
-        this.taux = taux;
-    }
 
-    public double getTaux() {
+    public CompteEpargne(String numCompte, double solde, LocalDate dateCreation, CompteStatus status, double taux) {
+		super(numCompte, solde, dateCreation, status);
+		this.taux = taux;
+	}
+
+
+
+	public double getTaux() {
         return taux;
     }
 
