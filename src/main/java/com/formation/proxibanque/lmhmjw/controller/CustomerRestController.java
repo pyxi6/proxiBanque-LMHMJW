@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.formation.proxibanque.lmhmjw.entity.Conseiller;
 import com.formation.proxibanque.lmhmjw.entity.Customer;
 import com.formation.proxibanque.lmhmjw.repository.CustomerRepository;
 import com.formation.proxibanque.lmhmjw.service.CustomerServiceImpl;
@@ -32,6 +33,12 @@ public class CustomerRestController {
 	public List<Customer> listAllCustomers(){
 		return customerServiceImpl.listAllCustomersService();
 	}
+	
+//	@GetMapping(path = "/customers/{id}")
+//	public List<Customer> listCustomerByConseiller(@PathVariable Long id){
+//		return customerServiceImpl.listCustomersByConseillerService(id);
+//		
+//	}
 	
 	@GetMapping(path = "/customers/{id}")
 	public Customer getCustomerById(@PathVariable Long id) {

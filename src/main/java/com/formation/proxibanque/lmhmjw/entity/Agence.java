@@ -28,8 +28,8 @@ public class Agence {
 	@OneToOne(mappedBy = "agence")
 	private Directeur directeur;
 	
-	@OneToMany(mappedBy = "agence")
-	private List<Customer> customers;
+//	@OneToMany(mappedBy = "agence")
+//	private List<Customer> customers;
 
 	public Agence() {
 	
@@ -39,13 +39,13 @@ public class Agence {
 		this.adresse = adresse;
 	}
 
-	public Agence(Adresse adresse, List<Conseiller> conseiller,
-			Directeur directeur, List<Customer> customers) {
-		this.adresse = adresse;
-		this.conseiller = conseiller;
-		this.directeur = directeur;
-		this.customers = customers;
-	}
+//	public Agence(Adresse adresse, List<Conseiller> conseiller,
+//			Directeur directeur, List<Customer> customers) {
+//		this.adresse = adresse;
+//		this.conseiller = conseiller;
+//		this.directeur = directeur;
+//		this.customers = customers;
+//	}
 
 	public Long getId() {
 		return id;

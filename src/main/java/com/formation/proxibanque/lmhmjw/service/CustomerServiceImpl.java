@@ -1,5 +1,6 @@
 package com.formation.proxibanque.lmhmjw.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,21 @@ public class CustomerServiceImpl {
 	public List<Customer> listAllCustomersService(){
 		return customerRepository.findAll();
 	}
+	
+//	public List<Customer> listCustomersByConseillerService(Long id){
+//		List<Customer> customersConseiller = new ArrayList<>();
+//		List<Customer> customers = new ArrayList<>();
+//		customers = customerRepository.findAll();
+//		for (Customer customer : customers) {
+//			if(customer.getConseiller().getId().equals(id)) {
+//				customersConseiller.add(customer);
+//			}
+//			
+//		}
+//		return customersConseiller;
+//							
+//			
+//	}
 	
 	
 	public Customer getCustomerByIdService(Long id) {

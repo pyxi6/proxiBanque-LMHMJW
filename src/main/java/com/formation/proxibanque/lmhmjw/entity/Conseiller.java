@@ -24,8 +24,8 @@ public class Conseiller{
 	@JoinColumn(name="id_agence")
 	private Agence agence;
 	
-	@OneToMany(mappedBy = "conseiller")
-	private List<Customer> customers;
+//	@OneToMany(mappedBy = "conseiller")
+//	private List<Customer> customers;
 	
 	public Conseiller() {
 	}
@@ -39,11 +39,11 @@ public class Conseiller{
 		this.personne = personne;
 	}
 
-	public Conseiller(Personne personne, Agence agence, List<Customer> customers) {
-		this.personne = personne;
-		this.agence = agence;
-		this.customers = customers;
-	}
+//	public Conseiller(Personne personne, Agence agence, List<Customer> customers) {
+//		this.personne = personne;
+//		this.agence = agence;
+//		this.customers = customers;
+//	}
 
 
 	public Long getId() {
@@ -70,13 +70,13 @@ public class Conseiller{
 		this.agence = agence;
 	}
 
-	public List<Customer> getCustomers() {
-		return customers;
-	}
-
-	public void setCustomers(List<Customer> customers) {
-		this.customers = customers;
-	}
+//	public List<Customer> getCustomers() {
+//		return customers;
+//	}
+//
+//	public void setCustomers(List<Customer> customers) {
+//		this.customers = customers;
+//	}
 
 	@Override
 	public String toString() {
