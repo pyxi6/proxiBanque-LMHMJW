@@ -22,18 +22,18 @@ import java.util.List;
 @RestController
 public class CompteRestController {
 
+	// on a besoin d'accedez a la base
+	// eviter @Autowaired deprciller
 
-    // on a besoin d'accedez a la base
-    // eviter @Autowaired deprciller
+	@Autowired
+	private CompteRepository compteRepository;
 
-    @Autowired
-    private CompteRepository compteRepository;
+	@Autowired
+	private CompteCourantRepository compteCourantRepository;
 
-    @Autowired
-    private CompteCourantRepository compteCourantRepository;
+	@Autowired
+	private CompteEpargneRepository compteEpargneRepository;
 
-    @Autowired
-    private CompteEpargneRepository compteEpargneRepository;
 
      private CompteService compteService;
      

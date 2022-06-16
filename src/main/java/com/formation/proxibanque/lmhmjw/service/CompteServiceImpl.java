@@ -19,11 +19,11 @@ public class CompteServiceImpl implements CompteService{
 
 
     private CustomerRepository customerRepository;
+    
     private CompteRepository compteRepository;
-
     private CompteCourantRepository compteCourantRepository;
-
     private CompteEpargneRepository compteEpargneRepository;
+    
     private OpperationRepository opperationRepository;
 
     public CompteServiceImpl(CustomerRepository customerRepository,
@@ -37,11 +37,9 @@ public class CompteServiceImpl implements CompteService{
         this.compteCourantRepository = compteCourantRepository;
         this.compteEpargneRepository = compteEpargneRepository;
         this.opperationRepository = opperationRepository;
-
-
-
     }
 
+    
     @Override
     public CompteCourant saveCompteCourrant(double initialSolde, double decouvert, long customerID) {
 
@@ -85,23 +83,44 @@ public class CompteServiceImpl implements CompteService{
     public List<Compte> listComptes() {
         return compteRepository.findAll();
     }
+    
+	@Override
+	public List<CompteCourant> listComptesCourants() {
+	
+		return compteCourantRepository.findAll();
+	}
+
+
+	@Override
+	public List<CompteEpargne> listeCompteEpargnes() {
+		
+		return compteEpargneRepository.findAll();
+	}
 
     @Override
     public Compte getCompte(Long compteId) {
 
-        return compteRepository.findById(compteId).get();
-
-        
+        Compte compte = compteRepository.findById(compteId).
+                orElseThrow(()->new RuntimeException("Compte n'existe pas"));
+        return compte;
     }
 
-
+   
+    @Override
+    public CompteCourant updateCompteCourant(Long compteCourantId, Compte compteCourant) {
+    	
+  	CompteCourant compCourant = compteCourantRepository.findById(compteCourantId).
+              orElseThrow(()->new RuntimeException("Compte n'existe pas"));
+      return compteRepository.save(compCourant);
+  }
 
     @Override
-    public Compte updateCompte(Long compteId, Compte compte) {
-//        compte.setId(compteId);
-        return compteRepository.save(compte);
-    }
+    public Compte updateCompteEpargne(Long compteEpargneId, Compte compteEpargne) {
 
+    	CompteEpargne comptEpargne = compteEpargneRepository.findById(compteEpargneId).
+                orElseThrow(()->new RuntimeException("Compte n'existe pas"));
+        return compteEpargneRepository.save(comptEpargne);
+    }
 
 
     @Override
@@ -133,8 +152,8 @@ public class CompteServiceImpl implements CompteService{
     public void crediter(Long compteId, double montant, String description) {
 
         Compte compte= getCompte(compteId);
-
         Opperation opperation = new Opperation();
+        
         opperation.setTypeOpperation(TypeOpperation.CREDIT);
         opperation.setMontant(montant);
         opperation.setDescription(description);
@@ -144,14 +163,14 @@ public class CompteServiceImpl implements CompteService{
         opperationRepository.save(opperation);
         compte.setSolde(compte.getSolde()+montant);
         compteRepository.save(compte);
-
     }
+    
 
     @Override
     public void virement(Long compteIdSource, Long compteIdDestinataire, double montant) {
 
         debiter(compteIdSource,montant, "Transfer à "+compteIdDestinataire);
         crediter(compteIdDestinataire, montant, "Transfer depuis"+compteIdSource);
-
     }
+
 }

@@ -2,6 +2,7 @@ package com.formation.proxibanque.lmhmjw.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreType;
+
 import com.formation.proxibanque.lmhmjw.entity.enums.CompteStatus;
 import com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte;
 
@@ -28,14 +29,16 @@ public  class Compte {
 	@Enumerated(EnumType.STRING) // Enregistre le type au format string en base
 	private CompteStatus status;
 
+	
 
-	@JsonIgnore
 	//compte lié à un customer
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "CODE_CLIENT") // nom de la jointure, cle etrangere sinon c' customer
 	private Customer customer;
 	
 	
+
 
 	@OneToMany(mappedBy = "compte", fetch = FetchType.LAZY)
 	private List<Opperation> opperations;
