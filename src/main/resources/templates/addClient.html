@@ -6,21 +6,24 @@
 <link rel="stylesheet"	href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
-	<div class="container">
-		<h2>Nouveau Client</h2>
+	<div class="container is-max-desktop">
+		<div class="">
+		<h2 class="title">Nouveau Client</h2>
+		<a th:href="@{/customersWeb}" >Retour</a>
 		<form action="/customersWeb/addClient" method="POST"
 			th:object="${customer}">
-			Prénom: <input class="input" th:field="*{prenom}" type="text" name="prenom" /> <br /> 
-			Nom: <input class="input" th:field="*{nom}" type="text" name="nom" /> <br /> 
-			N° de téléphone: <input class="input" th:field="*{numTel}" type="text" name="numTel" /><br />
-			Adresse: <input class="input" th:field="*{adresse.numEtRue}" type="text" name="numEtRue" /><br />
-			Code Postal: <input class="input" th:field="*{adresse.codePostal}" type="text" name="codePostal" /><br />
-			Ville: <input class="input" th:field="*{adresse.ville}" type="text" name="ville" /><br />
+			Prénom: <input class="input" th:field="*{prenom}" type="text" name="prenom" required /> <br /> 
+			Nom: <input class="input" th:field="*{nom}" type="text" name="nom" required /> <br /> 
+			N° de téléphone: <input class="input" th:field="*{numTel}" type="text" name="numTel" required /><br />
+			Adresse: <input class="input" th:field="*{adresse.numEtRue}" type="text" name="numEtRue" required /><br />
+			Code Postal: <input class="input" th:field="*{adresse.codePostal}" type="text" name="codePostal" required /><br />
+			Ville: <input class="input" th:field="*{adresse.ville}" type="text" name="ville" required /><br />
 	
 	
 			<!--    Ce bouton m'envoie vers la methode addClient du ClientController-->
 			<input type="submit" value="Ajouter" />
 		</form>
+		</div>
 	</div>
 
 </body>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dossier Client</title>
+<link rel="stylesheet"	href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+	<div class="container is-max-desktop">
+		<h1 class="title" >Dossier Client</h1>
+		<a th:href="@{/customersWeb}" >Retour</a>
+		<div class="columns">
+			<div class="column">
+			 <p th:text="${customer.prenom}+ ' ' + ${customer.nom}">
+			 <p th:text="${customer.adresse.numEtRue}+ ' ' + ${customer.adresse.codePostal} + ' '+ ${customer.adresse.ville}">
+			 <p th:text="${customer.numTel}">
+			</div>
+			<div class="column">
+				<p th:text="${customer.comptes}">
+			</div>
+		
+		</div>
+	</div>
+</body>
+</html>

@@ -20,13 +20,15 @@ public class Customer {
 
 	// mapping relationnel, un client peut avoir plusieur compte
 	// relation by directionnel donc utiliser mappedBy,
-	// dans la classe compte le Customer est representer par l'attribu customer
 
-//	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-//	private Collection<Compte> comptes;
+	// dans la classe compte le Customer est representer par  l'attribu customer
+	
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+	private Collection<Compte> comptes;
+
 	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "id_conseiller")
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="id_conseiller")
 	private Conseiller conseiller;
 
 	@JsonIgnore
@@ -73,7 +75,6 @@ public class Customer {
 	}
 
 	public Customer(String prenom, String nom, String numTel, Adresse adresse, Conseiller conseiller) {
-		super();
 		this.prenom = prenom;
 		this.nom = nom;
 		this.numTel = numTel;
@@ -81,16 +82,17 @@ public class Customer {
 		this.conseiller = conseiller;
 	}
 
-//	public Customer(String prenom, String nom, String numTel, Adresse adresse, Collection<Compte> comptes,
-//			Conseiller conseiller, Agence agence) {
-//		this.prenom = prenom;
-//		this.nom = nom;
-//		this.numTel = numTel;
-//		this.adresse = adresse;
-//		this.comptes = comptes;
-//		this.conseiller = conseiller;
-//		this.agence = agence;
-//	}
+	public Customer(String prenom, String nom, String numTel, Adresse adresse, Collection<Compte> comptes,
+			Conseiller conseiller, Agence agence) {
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTel = numTel;
+		this.adresse = adresse;
+		this.comptes = comptes;
+		this.conseiller = conseiller;
+		this.agence = agence;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -131,15 +133,14 @@ public class Customer {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+	public Collection<Compte> getComptes() {
+		return comptes;
+	}
 
-//	public Collection<Compte> getComptes() {
-//		return comptes;
-//	}
-//
-//	public void setComptes(Collection<Compte> comptes) {
-//		this.comptes = comptes;
-//	}
-
+	public void setComptes(Collection<Compte> comptes) {
+		this.comptes = comptes;
+	}
+	
 	public Conseiller getConseiller() {
 		return conseiller;
 	}
