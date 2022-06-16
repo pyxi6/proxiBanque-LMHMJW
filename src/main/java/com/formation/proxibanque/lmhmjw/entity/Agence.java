@@ -38,6 +38,14 @@ public class Agence {
 	public Agence(Adresse adresse) {
 		this.adresse = adresse;
 	}
+	
+
+
+	public Agence(LocalDate date_ouverture, Adresse adresse) {
+		super();
+		this.date_ouverture = date_ouverture;
+		this.adresse = adresse;
+	}
 
 	public Agence(Adresse adresse, List<Conseiller> conseiller,
 			Directeur directeur, List<Customer> customers) {

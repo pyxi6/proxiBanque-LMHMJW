@@ -1,6 +1,9 @@
 package com.formation.proxibanque.lmhmjw.controller;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,14 +14,28 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.formation.proxibanque.lmhmjw.entity.Adresse;
 import com.formation.proxibanque.lmhmjw.entity.Agence;
+import com.formation.proxibanque.lmhmjw.entity.Customer;
+import com.formation.proxibanque.lmhmjw.repository.AgenceRepository;
 import com.formation.proxibanque.lmhmjw.service.AgenceServiceImpl;
 
 @RestController
 public class AgenceRestController {
 	
+	
 	@Autowired
 	private AgenceServiceImpl agenceServiceImpl;
+	
+	@Autowired
+	private AgenceRepository agenceRepository;
+	
+	@PostConstruct
+	public void dataLoaderAgence() {
+		Adresse adresseAgence = new Adresse("6 rue de la République", "92800", "Puteaux");
+		Agence agence = new Agence(LocalDate.now(), adresseAgence);
+		agenceRepository.save(agence);
+	}
 
 	public AgenceRestController(AgenceServiceImpl agenceServiceImpl) {
 		this.agenceServiceImpl = agenceServiceImpl;
