@@ -4,23 +4,23 @@ public class VirementRequestDTO {
 
     // il suffit de mettre que les attributs dont on a besoin dans la requet, pour faire un virement
     // + getter, setter
-    private String codeSource;
-    private String codeDestination;
+    private Long codeSource;
+    private Long codeDestination;
     private double montant;
 
-	public String getCodeSource() {
+	public Long getCodeSource() {
 		return codeSource;
 	}
 
-	public void setCodeSource(String codeSource) {
+	public void setCodeSource(Long codeSource) {
 		this.codeSource = codeSource;
 	}
 
-	public String getCodeDestination() {
+	public Long getCodeDestination() {
 		return codeDestination;
 	}
 
-	public void setCodeDestination(String codeDestination) {
+	public void setCodeDestination(Long codeDestination) {
 		this.codeDestination = codeDestination;
 	}
 

@@ -59,7 +59,7 @@ public void dataloder(){
     }
 
     @GetMapping(path = "/comptes/{compteId}")
-    public Compte getCompte(@PathVariable String compteId){
+    public Compte getCompte(@PathVariable Long compteId){
     return compteService.getCompte(compteId);
     }
 
@@ -79,13 +79,13 @@ public void dataloder(){
 
 
     @PutMapping(path = "/comptes/{countId}")
-    public Compte updateCompte(@PathVariable String countId,@RequestBody Compte compte ){
+    public Compte updateCompte(@PathVariable Long countId,@RequestBody Compte compte ){
 //        compte.setId(countId);
         return compteRepository.save(compte);
     }
 
     @DeleteMapping(path = "/comptes/{countId}")
-    public void deleteCompte(String countId){
+    public void deleteCompte(@PathVariable Long countId){
         compteRepository.deleteById(countId);
     }
 
