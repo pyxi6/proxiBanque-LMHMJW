@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Conseiller{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Long id;
 	@Embedded
 	private Personne personne;
@@ -29,7 +29,7 @@ public class Conseiller{
 	@JoinColumn(name="id_agence")
 	private Agence agence;
 	
-	@OneToMany(mappedBy = "conseiller", fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "conseiller", fetch = FetchType.EAGER)
 	private List<Customer> customers;
 	
 	public Conseiller() {

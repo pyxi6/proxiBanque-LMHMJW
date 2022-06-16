@@ -27,7 +27,7 @@ public class Customer {
 	private Collection<Compte> comptes;
 
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name="id_conseiller")
 	private Conseiller conseiller;
 
@@ -82,13 +82,12 @@ public class Customer {
 		this.conseiller = conseiller;
 	}
 
-	public Customer(String prenom, String nom, String numTel, Adresse adresse, Collection<Compte> comptes,
+	public Customer(String prenom, String nom, String numTel, Adresse adresse, 
 			Conseiller conseiller, Agence agence) {
 		this.prenom = prenom;
 		this.nom = nom;
 		this.numTel = numTel;
 		this.adresse = adresse;
-		this.comptes = comptes;
 		this.conseiller = conseiller;
 		this.agence = agence;
 	}

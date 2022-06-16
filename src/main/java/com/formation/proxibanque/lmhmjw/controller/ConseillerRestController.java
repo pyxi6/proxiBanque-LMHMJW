@@ -39,20 +39,6 @@ public class ConseillerRestController {
 	public ConseillerRestController(ConseillerServiceImpl serviceImpl) {
 		this.serviceImpl = serviceImpl;
 	}
-	
-	Personne p1 = new Personne("Lassale", "Jean");
-	Personne p2 = new Personne("Hidalgo", "Anne");
-	Personne p3 = new Personne("Cena", "John");
-	
-	@PostConstruct
-	public void LoaderConseiller() {
-		List<Conseiller> listCons = List.of(
-		new Conseiller(p1),
-		new Conseiller(p2),
-		new Conseiller(p3)
-		);
-		conseillerRepository.saveAll(listCons);
-	}
 
 
 	@GetMapping(path = "/conseillers")
