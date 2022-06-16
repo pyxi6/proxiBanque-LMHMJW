@@ -2,23 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Liste des clients</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<script src="https://kit.fontawesome.com/faf1b41247.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="table" th:switch="${customers}">
+<div class="container is-max-desktop"  th:switch="${customers}">
     <h2 th:case="null">No persons yet!</h2>
         <div th:case="*">
-            <h2>clients</h2>
-            <table>
+            <h2 class="title"  >Liste de nos clients</h2>
+            <table class="table is-centered">
                 <thead>
                     <tr>
                         <th>Nom</th>
                         <th>Prénom</th>
                         <th>Telephone</th>
                         <th>Adresse</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,12 +27,19 @@
                     <td th:text="${customer.nom}"></td>
                     <td th:text="${customer.numTel}"></td>
                     <td th:text="${customer.adresse.numEtRue}+ ' ' + ${customer.adresse.codePostal} + ' '+ ${customer.adresse.ville}"></td>
-                    <td><a th:href="@{/edit/{id}(id=${customer.id})}">Edit</a></td>
-                    <td><a th:href="@{/delete/{id}(id=${customer.id})}">Delete</a></td>
+                    <td><a th:href="@{/customersWeb/{id}(id=${customer.id})}">
+                    	<span class="icon">
+  							<i class="fa-solid fa-eye"></i>
+						</span></a>
+						<a th:href="@{/delete/{id}(id=${customer.id})}">
+						<span class="icon">
+  							<i class="fa-solid fa-xmark"></i>
+						</span></a>
+					</td>
                 </tr>
             </tbody>
         </table>
     </div>      
-    <p><a href="/customersWeb/addClient">Add a new person</a></p>
+    <p><a class="button" href="/customersWeb/addClient">Add a new person</a></p>
 </body>
 </html>

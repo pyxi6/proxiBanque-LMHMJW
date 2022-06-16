@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,19 +18,28 @@ import org.springframework.web.bind.annotation.RestController;
 import com.formation.proxibanque.lmhmjw.entity.Adresse;
 import com.formation.proxibanque.lmhmjw.entity.Agence;
 import com.formation.proxibanque.lmhmjw.entity.Conseiller;
+
 import com.formation.proxibanque.lmhmjw.entity.Customer;
+
+import com.formation.proxibanque.lmhmjw.entity.Personne;
+
 import com.formation.proxibanque.lmhmjw.repository.ConseillerRepository;
 import com.formation.proxibanque.lmhmjw.service.ConseillerServiceImpl;
 
 @RestController
 public class ConseillerRestController {
 	
+	@Autowired
 	private ConseillerServiceImpl serviceImpl;
 	
+
+	@Autowired
+	private ConseillerRepository conseillerRepository;
 
 	public ConseillerRestController(ConseillerServiceImpl serviceImpl) {
 		this.serviceImpl = serviceImpl;
 	}
+
 
 	@GetMapping(path = "/conseillers")
 	public List<Conseiller> ListConseiller(){

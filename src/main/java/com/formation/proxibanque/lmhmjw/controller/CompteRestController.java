@@ -89,21 +89,21 @@ public class CompteRestController {
  		Adresse adresse15= new Adresse("65 avenue des Marques", "92000", "Nanterre");
  		
  		
- 		Customer client1= new Customer("Marianne", "Guibert", "0123654789", adresse1, conseiller1);
- 		Customer client2= new Customer("Anouk", "Godard", "0156984321", adresse2, conseiller1);
- 		Customer client3= new Customer("Witołd", "Dudek", "0196325418", adresse3, conseiller1);
- 		Customer client4= new Customer("Nazih", "Nader", "0136589742", adresse4, conseiller1);
- 		Customer client5= new Customer("Yusraa ", "Anaan ", "0196325478", adresse5, conseiller1);
- 		Customer client6= new Customer("Honoré", "Jalbert", "0193214567", adresse6, conseiller1);
- 		Customer client7= new Customer("Mavise", "Jardine", "0178924536", adresse7, conseiller1);
- 		Customer client8= new Customer("Gérard", "Chartier", "0145632897", adresse8, conseiller2);
- 		Customer client9= new Customer("Rebeca", "Lima", "0122635547", adresse9, conseiller2);
- 		Customer client10= new Customer("Guang", "Tsui", "0133669985", adresse10, conseiller2);
- 		Customer client11= new Customer("Mathilde", "Lavoie", "0177896542", adresse11, conseiller3);
- 		Customer client12= new Customer("Russell", "Bonsaint", "0136998567", adresse12, conseiller3);
- 		Customer client13= new Customer("Vick", "Saucier", "0144785236", adresse13, conseiller3);
- 		Customer client14= new Customer("Jay", "Dagenais", "0133669987", adresse14, conseiller3);
- 		Customer client15= new Customer("Orson", "Perreault", "0123369549", adresse15, conseiller3);
+ 		Customer client1= new Customer("Marianne", "Guibert", "0123654789", adresse1, conseiller1,agence);
+ 		Customer client2= new Customer("Anouk", "Godard", "0156984321", adresse2, conseiller1,agence);
+ 		Customer client3= new Customer("Witołd", "Dudek", "0196325418", adresse3, conseiller1,agence);
+ 		Customer client4= new Customer("Nazih", "Nader", "0136589742", adresse4, conseiller1,agence);
+ 		Customer client5= new Customer("Yusraa ", "Anaan ", "0196325478", adresse5, conseiller1,agence);
+ 		Customer client6= new Customer("Honoré", "Jalbert", "0193214567", adresse6, conseiller1,agence);
+ 		Customer client7= new Customer("Mavise", "Jardine", "0178924536", adresse7, conseiller1,agence);
+ 		Customer client8= new Customer("Gérard", "Chartier", "0145632897", adresse8, conseiller2,agence);
+ 		Customer client9= new Customer("Rebeca", "Lima", "0122635547", adresse9, conseiller2,agence);
+ 		Customer client10= new Customer("Guang", "Tsui", "0133669985", adresse10, conseiller2,agence);
+ 		Customer client11= new Customer("Mathilde", "Lavoie", "0177896542", adresse11, conseiller3,agence);
+ 		Customer client12= new Customer("Russell", "Bonsaint", "0136998567", adresse12, conseiller3,agence);
+ 		Customer client13= new Customer("Vick", "Saucier", "0144785236", adresse13, conseiller3,agence);
+ 		Customer client14= new Customer("Jay", "Dagenais", "0133669987", adresse14, conseiller3,agence);
+ 		Customer client15= new Customer("Orson", "Perreault", "0123369549", adresse15, conseiller3,agence);
  		customerRepository.save(client1);
  		customerRepository.save(client2);
  		customerRepository.save(client3);
