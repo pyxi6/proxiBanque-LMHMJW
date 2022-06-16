@@ -27,15 +27,6 @@ public class AgenceRestController {
 	@Autowired
 	private AgenceServiceImpl agenceServiceImpl;
 	
-	@Autowired
-	private AgenceRepository agenceRepository;
-	
-	@PostConstruct
-	public void dataLoaderAgence() {
-		Adresse adresseAgence = new Adresse("6 rue de la République", "92800", "Puteaux");
-		Agence agence = new Agence(LocalDate.now(), adresseAgence);
-		agenceRepository.save(agence);
-	}
 
 	public AgenceRestController(AgenceServiceImpl agenceServiceImpl) {
 		this.agenceServiceImpl = agenceServiceImpl;

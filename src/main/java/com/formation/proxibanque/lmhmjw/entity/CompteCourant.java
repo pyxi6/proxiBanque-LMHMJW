@@ -23,11 +23,16 @@ public class CompteCourant  extends  Compte{
     }
     
 
-	public CompteCourant(String numCompte, double solde, LocalDate dateCreation, CompteStatus status,
+	public CompteCourant(String numCompte, double solde, LocalDate dateCreation, CompteStatus status, Customer customer,
 			double decouvert) {
-		super(numCompte, solde, dateCreation, status);
+		super(numCompte, solde, dateCreation, status, customer);
 		this.decouvert = decouvert;
 	}
+	
+
+	
+	
+	
 
 	public double getDecouvert() {
         return decouvert;
