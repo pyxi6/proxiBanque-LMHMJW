@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Conseiller{
 	
@@ -21,6 +23,7 @@ public class Conseiller{
 	@Embedded
 	private Personne personne;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="id_agence")
 	private Agence agence;

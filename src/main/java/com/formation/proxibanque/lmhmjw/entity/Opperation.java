@@ -1,5 +1,6 @@
 package com.formation.proxibanque.lmhmjw.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.formation.proxibanque.lmhmjw.entity.enums.TypeOpperation;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class Opperation {
     @Enumerated(EnumType.STRING)
     private TypeOpperation typeOpperation;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "Code_Compte") // nom de la cle etrangere
     private Compte compte;
