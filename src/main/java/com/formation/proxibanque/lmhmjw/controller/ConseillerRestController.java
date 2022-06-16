@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.formation.proxibanque.lmhmjw.entity.Conseiller;
+import com.formation.proxibanque.lmhmjw.entity.Customer;
 import com.formation.proxibanque.lmhmjw.service.ConseillerServiceImpl;
 
 @RestController
@@ -30,6 +31,11 @@ public class ConseillerRestController {
 	@GetMapping(path = "/conseillers/{id}")
 	public Conseiller getConseiller(@PathVariable Long id) {
 		return serviceImpl.findConseillerById(id);
+	}
+	
+	@GetMapping(path = "/conseillers/clients/{id}")
+	public List<Customer> GetCustomerByConseiller(@PathVariable Long id){
+		return serviceImpl.ListCustomerByConseiller(id);
 	}
 	
 	@PostMapping(path = "/conseillers")
