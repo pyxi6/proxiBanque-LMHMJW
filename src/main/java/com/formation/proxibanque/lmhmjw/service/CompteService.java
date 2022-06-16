@@ -15,18 +15,18 @@ public interface CompteService {
 
      CompteCourant saveCompteCourrant (double initialSolde, double decouvert, long customerID);
      CompteEpargne saveCompteEpargne (double initialSolde, double taux, long customerID);
-     Compte getCompte(String compteId);
+     Compte getCompte(Long compteId);
 
      List<Compte> listComptes();
 
-     Compte updateCompte(String compteId, Compte compte);
+     Compte updateCompte(Long compteId, Compte compte);
 
-     void deleatCompte (String compteId);
+     void deleatCompte (Long compteId);
 
-     void debiter(String compteId, double montant, String description);
-     void crediter(String compteId, double montant, String description);
+     void debiter(Long compteId, double montant, String description);
+     void crediter(Long compteId, double montant, String description);
 
-     void virement(String compteIdSource, String compteIdDestinataire, double montant);
+     void virement(Long compteIdSource, Long compteIdDestinataire, double montant);
 
 
 

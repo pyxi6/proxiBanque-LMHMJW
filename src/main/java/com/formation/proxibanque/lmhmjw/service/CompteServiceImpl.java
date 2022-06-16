@@ -90,7 +90,7 @@ public class CompteServiceImpl implements CompteService{
     }
 
     @Override
-    public Compte getCompte(String compteId) {
+    public Compte getCompte(Long compteId) {
 
         return compteRepository.findById(compteId).get();
 
@@ -102,7 +102,7 @@ public class CompteServiceImpl implements CompteService{
 
 
     @Override
-    public Compte updateCompte(String compteId, Compte compte) {
+    public Compte updateCompte(Long compteId, Compte compte) {
 //        compte.setId(compteId);
         return compteRepository.save(compte);
     }
@@ -110,12 +110,12 @@ public class CompteServiceImpl implements CompteService{
 
 
     @Override
-    public void deleatCompte(String compteId) {
+    public void deleatCompte(Long compteId) {
         compteRepository.deleteById(compteId);
     }
 
     @Override
-    public void debiter(String compteId, double montant, String description) {
+    public void debiter(Long compteId, double montant, String description) {
 
         Compte compte= getCompte(compteId);
         if(compte.getSolde()<montant)
@@ -135,7 +135,7 @@ public class CompteServiceImpl implements CompteService{
     }
 
     @Override
-    public void crediter(String compteId, double montant, String description) {
+    public void crediter(Long compteId, double montant, String description) {
 
         Compte compte= getCompte(compteId);
 
@@ -153,7 +153,7 @@ public class CompteServiceImpl implements CompteService{
     }
 
     @Override
-    public void virement(String compteIdSource, String compteIdDestinataire, double montant) {
+    public void virement(Long compteIdSource, Long compteIdDestinataire, double montant) {
 
         debiter(compteIdSource,montant, "Transfer à "+compteIdDestinataire);
         crediter(compteIdDestinataire, montant, "Transfer depuis"+compteIdSource);
