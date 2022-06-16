@@ -53,8 +53,6 @@ public class CompteServiceImpl implements CompteService{
 
         CompteCourant compteCourant= new CompteCourant();
 
-
-      /*  compteCourant.setId(UUID.randomUUID().toString());*/
         compteCourant.setDateCreation(LocalDate.now());
         compteCourant.setSolde(initialSolde);
         compteCourant.setDecouvert(decouvert);
@@ -73,8 +71,7 @@ public class CompteServiceImpl implements CompteService{
         }
 
         CompteEpargne compteEpargne= new CompteEpargne();
-
-        /*compteEpargne.setId(UUID.randomUUID().toString());*/
+        
         compteEpargne.setDateCreation(LocalDate.now());
         compteEpargne.setSolde(initialSolde);
         compteEpargne.setTaux(taux);
@@ -94,9 +91,7 @@ public class CompteServiceImpl implements CompteService{
 
         return compteRepository.findById(compteId).get();
 
-        /*Compte compte = compteRepository.findById(compteId).
-                orElseThrow(()->new RuntimeException("Compte n'existe pas"));
-        return compte;*/
+        
     }
 
 

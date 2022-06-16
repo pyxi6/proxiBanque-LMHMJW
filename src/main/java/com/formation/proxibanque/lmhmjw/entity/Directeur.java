@@ -60,11 +60,13 @@ public class Directeur{
 	public void setAgence(Agence agence) {
 		this.agence = agence;
 	}
- 
+
 	@Override
 	public String toString() {
-		return "Directeur [id=" + id + ", personne=" + personne + "]";
+		return "Directeur [id=" + id + ", personne=" + personne + ", agence=" + agence + "]";
 	}
+ 
+	
 
 	
 	

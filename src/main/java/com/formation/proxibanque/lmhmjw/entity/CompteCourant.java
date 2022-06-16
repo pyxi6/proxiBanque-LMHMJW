@@ -41,4 +41,11 @@ public class CompteCourant  extends  Compte{
     public void setDecouvert(double decouvert) {
         this.decouvert = decouvert;
     }
+
+	@Override
+	public String toString() {
+		return "CompteCourant [decouvert=" + decouvert + "]";
+	}
+    
+    
 }

@@ -81,8 +81,11 @@ public class Agence {
 
 	@Override
 	public String toString() {
-		return "Agence [id=" + id + ", date_ouverture=" + date_ouverture + ", adresse=" + adresse + "]";
+		return "Agence [id=" + id + ", date_ouverture=" + date_ouverture + ", adresse=" + adresse + ", conseiller="
+				+ conseiller + ", directeur=" + directeur + ", customers=" + customers + "]";
 	}
+
+	
 	
 	
 	

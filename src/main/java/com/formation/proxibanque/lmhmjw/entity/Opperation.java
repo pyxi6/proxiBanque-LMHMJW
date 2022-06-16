@@ -83,4 +83,12 @@ public class Opperation {
     public void setDescription(String description) {
         this.description = description;
     }
+
+	@Override
+	public String toString() {
+		return "Opperation [id=" + id + ", dateOperation=" + dateOperation + ", montant=" + montant
+				+ ", typeOpperation=" + typeOpperation + ", compte=" + compte + ", description=" + description + "]";
+	}
+    
+    
 }

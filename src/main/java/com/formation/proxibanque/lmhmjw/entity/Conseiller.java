@@ -91,8 +91,13 @@ public class Conseiller{
 
 	@Override
 	public String toString() {
-		return "Conseiller [id=" + id + ", personne=" + personne + "]";
+		return "Conseiller [id=" + id + ", personne=" + personne + ", agence=" + agence + ", customers=" + customers
+				+ "]";
 	}
+
+	
+	
+	
 	
 	
 	

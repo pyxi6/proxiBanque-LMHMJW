@@ -31,6 +31,13 @@ public class Personne {
 		this.prenom = prenom;
 	}
 	
+	@Override
+	public String toString() {
+		return "Personne [nom=" + nom + ", prenom=" + prenom + "]";
+	}
+	
+	
+	
 	
 	
 	

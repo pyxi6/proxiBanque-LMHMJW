@@ -158,7 +158,9 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer{" + "id=" + id + ", prenom='" + prenom + '\'' + ", nom='" + nom + '\'' + ", numTel='" + numTel
-				+ '\'' + ", adresse=" + adresse + '}';
+		return "Customer [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", numTel=" + numTel + ", adresse="
+				+ adresse + ", conseiller=" + conseiller + ", agence=" + agence + "]";
 	}
+
+
 }

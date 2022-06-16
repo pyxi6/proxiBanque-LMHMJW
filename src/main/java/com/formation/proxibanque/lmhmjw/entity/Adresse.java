@@ -41,12 +41,14 @@ public class Adresse {
 	
 	public Adresse() {
 	}
-
 	@Override
 	public String toString() {
 		return "Adresse [numEtRue=" + numEtRue + ", codePostal=" + codePostal + ", ville=" + ville + "]";
 	}
 	
+	
+
+
 	
 	
 	

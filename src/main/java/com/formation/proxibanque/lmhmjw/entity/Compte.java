@@ -143,6 +143,12 @@ public  class Compte {
 				+ ", status=" + status + ", customer=" + customer + ", opperations=" + opperations + ", type=" + type
 				+ "]";
 	}
+
+
+
+
+
+
 	
 	
 

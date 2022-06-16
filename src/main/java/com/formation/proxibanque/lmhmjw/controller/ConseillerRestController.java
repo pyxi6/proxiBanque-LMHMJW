@@ -40,7 +40,7 @@ public class ConseillerRestController {
 		return serviceImpl.findConseillerById(id);
 	}
 	
-	@GetMapping(path = "/conseillers/clients/{id}")
+	@GetMapping(path = "/conseillers/{id}/clients")
 	public List<Customer> GetCustomerByConseiller(@PathVariable Long id){
 		return serviceImpl.ListCustomerByConseiller(id);
 	}
