@@ -48,9 +48,14 @@ public class CustomerUIController {
 		
 		customerServiceImpl.saveCustomerService(customer);
 		
-		return "listeClients";
+		return "redirect:/customersWeb/";
 	}
 	
+	@GetMapping("/customersWeb/delete/{id}")
+	public String deleteCustomer(@PathVariable Long id){
+		customerServiceImpl.deleteCustomerService(id);
+		return "redirect:/customersWeb/";
+	}
 
 	 
 	

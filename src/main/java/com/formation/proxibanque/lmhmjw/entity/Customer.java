@@ -23,7 +23,7 @@ public class Customer {
 
 	// dans la classe compte le Customer est representer par  l'attribu customer
 	
-	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
 	private Collection<Compte> comptes;
 
 	@JsonIgnore
