@@ -2,6 +2,7 @@ package com.formation.proxibanque.lmhmjw.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +26,7 @@ public class Conseiller{
 	@JoinColumn(name="id_agence")
 	private Agence agence;
 	
-	@OneToMany(mappedBy = "conseiller", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "conseiller", fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
 	private List<Customer> customers;
 	
 	public Conseiller() {

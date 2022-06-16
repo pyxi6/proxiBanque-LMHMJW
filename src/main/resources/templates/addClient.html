@@ -6,8 +6,10 @@
 <link rel="stylesheet"	href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
-	<div class="container">
-		<h2>Nouveau Client</h2>
+	<div class="container is-max-desktop">
+		<div class="">
+		<h2 class="title">Nouveau Client</h2>
+		<a th:href="@{/customersWeb}" >Retour</a>
 		<form action="/customersWeb/addClient" method="POST"
 			th:object="${customer}">
 			Prénom: <input class="input" th:field="*{prenom}" type="text" name="prenom" /> <br /> 
@@ -21,6 +23,7 @@
 			<!--    Ce bouton m'envoie vers la methode addClient du ClientController-->
 			<input type="submit" value="Ajouter" />
 		</form>
+		</div>
 	</div>
 
 </body>

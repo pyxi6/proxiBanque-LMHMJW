@@ -21,10 +21,10 @@ public class Customer {
 	// relation by directionnel donc utiliser mappedBy,
 	// dans la classe compte le Customer est representer par  l'attribu customer
 	
-//	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-//	private Collection<Compte> comptes;
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+	private Collection<Compte> comptes;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="id_conseiller")
 	private Conseiller conseiller;
 	
@@ -72,16 +72,16 @@ public Customer(Long id, String prenom, String nom, String numTel, Adresse adres
 		this.agence = agence;
 	}
 
-//	public Customer(String prenom, String nom, String numTel, Adresse adresse, Collection<Compte> comptes,
-//			Conseiller conseiller, Agence agence) {
-//		this.prenom = prenom;
-//		this.nom = nom;
-//		this.numTel = numTel;
-//		this.adresse = adresse;
-//		this.comptes = comptes;
-//		this.conseiller = conseiller;
-//		this.agence = agence;
-//	}
+	public Customer(String prenom, String nom, String numTel, Adresse adresse, Collection<Compte> comptes,
+			Conseiller conseiller, Agence agence) {
+		this.prenom = prenom;
+		this.nom = nom;
+		this.numTel = numTel;
+		this.adresse = adresse;
+		this.comptes = comptes;
+		this.conseiller = conseiller;
+		this.agence = agence;
+	}
 
 
 	public Long getId() {
@@ -115,13 +115,13 @@ public Customer(Long id, String prenom, String nom, String numTel, Adresse adres
 		this.adresse = adresse;
 	}
 
-//	public Collection<Compte> getComptes() {
-//		return comptes;
-//	}
-//
-//	public void setComptes(Collection<Compte> comptes) {
-//		this.comptes = comptes;
-//	}
+	public Collection<Compte> getComptes() {
+		return comptes;
+	}
+
+	public void setComptes(Collection<Compte> comptes) {
+		this.comptes = comptes;
+	}
 	
 	public Conseiller getConseiller() {
 		return conseiller;
