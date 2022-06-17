@@ -1,5 +1,6 @@
 package com.formation.proxibanque.lmhmjw.service;
 
+import com.formation.proxibanque.lmhmjw.dto.DebitDTO;
 import com.formation.proxibanque.lmhmjw.entity.*;
 import com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte;
 import com.formation.proxibanque.lmhmjw.entity.enums.TypeOpperation;
@@ -136,6 +137,7 @@ public class CompteServiceImpl implements CompteService{
             throw new RuntimeException("Solde insuffisant");
 
         Opperation opperation = new Opperation();
+        
         opperation.setTypeOpperation(TypeOpperation.DEBIT);
         opperation.setMontant(montant);
         opperation.setDescription(description);
@@ -144,7 +146,7 @@ public class CompteServiceImpl implements CompteService{
 
         opperationRepository.save(opperation);
         compte.setSolde(compte.getSolde()-montant);
-        compteRepository.save(compte);
+         compteRepository.save(compte);        
 
     }
 

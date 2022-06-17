@@ -48,10 +48,8 @@ public class CompteRestController {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
+
 	
- 	
- 	
- 	
  	@PostConstruct
  	public void dataLoaderAgence() {
  		Adresse adresseAgence = new Adresse("6 rue de la République", "92800", "Puteaux");
@@ -165,18 +163,10 @@ public class CompteRestController {
  		compteEpargneRepository.save(compteEpargne3);
  		compteEpargneRepository.save(compteEpargne4);
  		compteEpargneRepository.save(compteEpargne5);
-
-
-
+	
  		
- 		
- 	}
-
-     
-
-           
+ 	}          
  
-
 
     public CompteRestController(CompteService compteService) {
         this.compteService = compteService;
@@ -186,6 +176,16 @@ public class CompteRestController {
     @GetMapping(path = "/comptes")
     public List<Compte> ListComptes(){
         return compteService.listComptes();
+    }
+    
+    @GetMapping(path = "/comptes/courant")
+    public List<CompteCourant> listComptesCourant(){
+        return  compteService.listComptesCourants();
+    }
+    
+    @GetMapping(path = "/comptes/epargne")
+    public List<CompteEpargne> listComptesEpargnes(){
+        return compteService.listeCompteEpargnes();
     }
 
     @GetMapping(path = "/comptes/{compteId}")
@@ -199,10 +199,7 @@ public class CompteRestController {
     }
 
     @PostMapping(path = "/comptes/epargne")
-    public CompteEpargne saveCompteEpargne(@RequestBody CompteEpargne compteEpargne){
-        System.out.println("------------------------------------");
-        System.out.println("#####################################");
-        System.out.println("------------------------------------");
+    public CompteEpargne saveCompteEpargne(@RequestBody CompteEpargne compteEpargne){        
         System.out.println(compteEpargne);
         return compteEpargneRepository.save(compteEpargne);
     }
