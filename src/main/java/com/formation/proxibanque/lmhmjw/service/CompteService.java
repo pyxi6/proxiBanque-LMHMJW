@@ -1,6 +1,9 @@
 package com.formation.proxibanque.lmhmjw.service;
 
 
+import com.formation.proxibanque.lmhmjw.dto.CreditDTO;
+import com.formation.proxibanque.lmhmjw.dto.DebitDTO;
+import com.formation.proxibanque.lmhmjw.dto.VirementDTO;
 import com.formation.proxibanque.lmhmjw.entity.Compte;
 import com.formation.proxibanque.lmhmjw.entity.CompteCourant;
 import com.formation.proxibanque.lmhmjw.entity.CompteEpargne;
@@ -25,9 +28,9 @@ public interface CompteService {
           
      void deleatCompte (Long compteId);
 
-     void debiter(Long compteId, double montant, String description);
-     void crediter(Long compteId, double montant, String description);
+     DebitDTO debiter(Long compteId, double montant, String description);
+     CreditDTO crediter(Long compteId, double montant, String description);
 
-     void virement(Long compteIdSource, Long compteIdDestinataire, double montant);
+     VirementDTO virement(Long compteIdSource, Long compteIdDestinataire, double montant);
      
 }
