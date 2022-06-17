@@ -145,7 +145,7 @@ public class CompteServiceImpl implements CompteService{
     	DebitDTO debitDTO = new DebitDTO();    	
     	debitDTO.setSoldesAvant(compte.getSolde());	    
     	
-        if(compte.getSolde() < montant) {
+        if(compte.getSolde()  < montant) {
         	debitDTO.setEtatVirement(false);
             throw new RuntimeException("Solde insuffisant");}
 

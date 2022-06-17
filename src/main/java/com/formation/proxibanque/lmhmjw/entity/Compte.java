@@ -16,41 +16,33 @@ import java.util.List;
 // Single_Table une table pour tous les herarchie de classe, probleme lorsqu'il ya bcq de collon null
 // une seul table compte ou on met tout
 @Inheritance(strategy = InheritanceType.JOINED)
-/*@DiscriminatorColumn(name = "TypeCompte", length = 15) */// nom de la colone type avec nom caractere <12
-public  class Compte {
+/* @DiscriminatorColumn(name = "TypeCompte", length = 15) */// nom de la colone type avec nom caractere <12
+public class Compte {
 
-    @Id
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String numCompte;
-    private double solde;
-    private LocalDate dateCreation;
+	private Long id;
+	private String numCompte;
+	private double solde;
+	private LocalDate dateCreation;
 
 	@Enumerated(EnumType.STRING) // Enregistre le type au format string en base
 	private CompteStatus status;
 
-	
-
-	//compte lié à un customer
+	// compte lié à un customer
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "CODE_CLIENT") // nom de la jointure, cle etrangere sinon c' customer
 	private Customer customer;
-	
-	
-
 
 	@OneToMany(mappedBy = "compte", fetch = FetchType.LAZY)
 	private List<Opperation> opperations;
-    @Enumerated(EnumType.STRING) // dans la base le type va etre stocker sous forme de string  // Ordinaire c'est sous forme numeriques
-    private TypeCompte type;
+	@Enumerated(EnumType.STRING) // dans la base le type va etre stocker sous forme de string // Ordinaire c'est
+									// sous forme numeriques
+	private TypeCompte type;
 
 	public Compte() {
 	}
-
-
-
-
 
 	public Compte(String numCompte, double solde, LocalDate dateCreation, CompteStatus status, Customer customer) {
 		super();
@@ -60,16 +52,14 @@ public  class Compte {
 		this.status = status;
 		this.customer = customer;
 	}
+	
 
-
-
-
-
-
-
-
-
-
+	//constructeur utilisé pour les tests unitaires
+	public Compte(String numCompte, double solde) {
+		super();
+		this.numCompte = numCompte;
+		this.solde = solde;
+	}
 
 	public Long getId() {
 		return id;
@@ -126,7 +116,6 @@ public  class Compte {
 	public void setType(TypeCompte type) {
 		this.type = type;
 	}
-	
 
 	public String getNumCompte() {
 		return numCompte;
@@ -136,24 +125,11 @@ public  class Compte {
 		this.numCompte = numCompte;
 	}
 
-
-
-
-
 	@Override
 	public String toString() {
 		return "Compte [id=" + id + ", numCompte=" + numCompte + ", solde=" + solde + ", dateCreation=" + dateCreation
 				+ ", status=" + status + ", customer=" + customer + ", opperations=" + opperations + ", type=" + type
 				+ "]";
 	}
-
-
-
-
-
-
-	
-	
-
 
 }
