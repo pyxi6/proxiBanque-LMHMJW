@@ -137,8 +137,7 @@ public class CompteRestController {
  		CompteCourant compteCourant13= new CompteCourant("A112", 3604, LocalDate.now(), CompteStatus.ACTIVER, client13, TypeCompte.COURANT ,1000);
  		CompteCourant compteCourant14= new CompteCourant("A113", -6633, LocalDate.now(), CompteStatus.ACTIVER, client14, TypeCompte.COURANT ,1000);
  		CompteCourant compteCourant15= new CompteCourant("A114", 3247, LocalDate.now(), CompteStatus.ACTIVER, client15, TypeCompte.COURANT ,1000);
-
-
+ 		
  		compteCourantRepository.save(compteCourant1);
  		compteCourantRepository.save(compteCourant2);
  		compteCourantRepository.save(compteCourant3);
@@ -156,19 +155,39 @@ public class CompteRestController {
  		compteCourantRepository.save(compteCourant15);
  		
 
+ 		
+ 		
+
+ 		compteRepository.save(compteCourant1);
+ 		compteRepository.save(compteCourant2);
+ 		compteRepository.save(compteCourant3);
+ 		compteRepository.save(compteCourant4);
+ 		compteRepository.save(compteCourant5);
+ 		compteRepository.save(compteCourant6);
+ 		compteRepository.save(compteCourant7);
+ 		compteRepository.save(compteCourant8);
+ 		compteRepository.save(compteCourant9);
+ 		compteRepository.save(compteCourant10);
+ 		compteRepository.save(compteCourant11);
+ 		compteRepository.save(compteCourant12);
+ 		compteRepository.save(compteCourant13);
+ 		compteRepository.save(compteCourant14);
+ 		compteRepository.save(compteCourant15);
+ 		
  		CompteEpargne compteEpargne1 = new CompteEpargne("B100", 0, LocalDate.now(), CompteStatus.ACTIVER, client1, TypeCompte.EPARGNE ,3);
  		CompteEpargne compteEpargne2 = new CompteEpargne("B101", 500000, LocalDate.now(), CompteStatus.ACTIVER, client3,TypeCompte.EPARGNE , 3);
  		CompteEpargne compteEpargne3 = new CompteEpargne("B102", 0, LocalDate.now(), CompteStatus.ACTIVER, client5,TypeCompte.EPARGNE , 3);
  		CompteEpargne compteEpargne4 = new CompteEpargne("B103", 35000, LocalDate.now(), CompteStatus.ACTIVER, client8,TypeCompte.EPARGNE , 3);
  		CompteEpargne compteEpargne5 = new CompteEpargne("B104", 1200, LocalDate.now(), CompteStatus.ACTIVER, client2,TypeCompte.EPARGNE , 4);
  		
+ 		compteRepository.save(compteEpargne1);
+ 		compteRepository.save(compteEpargne2);
+ 		compteRepository.save(compteEpargne3);
+ 		compteRepository.save(compteEpargne4);
+ 		compteRepository.save(compteEpargne5);
  		
- 		compteEpargneRepository.save(compteEpargne1);
- 		compteEpargneRepository.save(compteEpargne2);
- 		compteEpargneRepository.save(compteEpargne3);
- 		compteEpargneRepository.save(compteEpargne4);
- 		compteEpargneRepository.save(compteEpargne5);
-
+ 		
+ 		
 
 
  		

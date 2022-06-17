@@ -43,6 +43,10 @@ public class AuditService {
 	}
 	
 
+	/**
+	 * Parametres d'entree: rien
+	 * @return solde total de l'agence
+	 */
 	public double getSoldeTotal() {
 
 		double soldeTotal = 0;
@@ -55,6 +59,11 @@ public class AuditService {
 		return soldeTotal;
 
 	}
+	
+	/**
+	 * Parametres d'entree: rien
+	 * @return solde des comptes epargnes de l'agence
+	 */
 
 	public double getSoldeEpargne() {
 
@@ -68,6 +77,11 @@ public class AuditService {
 		return soldeEpargne;
 
 	}
+	
+	/**
+	 * Parametres d'entree: rien
+	 * @return solde des comptes courants de l'agence
+	 */
 
 	public double getSoldeCourant() {
 
@@ -81,8 +95,12 @@ public class AuditService {
 		return soldeCourant;
 
 	}
+	/**
+	 * Parametres d'entree: rien
+	 * @return liste des clients avec solde total inférieur à 0
+	 */
 
-	public List<Customer> ListCustomersDeficitaires() {
+	public List<Customer> listCustomersDeficitaires() {
 
 		List<Customer> customers = customerRepository.findAll();
 		List<Customer> customerdeficitaires = new ArrayList<>();
@@ -104,8 +122,13 @@ public class AuditService {
 		return customerdeficitaires;
 
 	}
+	
+	/**
+	 * Parametres d'entree: rien
+	 * @return liste des clients avec solde total > 500 000
+	 */
 
-	public List<Customer> ListCustomersPremium() {
+	public List<Customer> listCustomersPremium() {
 
 		List<Customer> customers = customerRepository.findAll();
 		List<Customer> customerpremium = new ArrayList<>();
@@ -128,7 +151,10 @@ public class AuditService {
 
 	}
 
-
+	/**
+	 * Parametres d'entree: rien
+	 * @return liste des clients avec solde total < 5000
+	 */
 
 	public List<Customer> ListCustomerARisque() {
 
@@ -152,6 +178,11 @@ public class AuditService {
 		return customerARisque;
 
 	}
+	
+	/**
+	 * Parametres d'entree: id conseiller
+	 * @return nombre de clients du conseiller
+	 */
 	
 	public int getNombreClientParConseiller(Long id) {
 		List<Customer> customers = conseillerRepository.findById(id).get().getCustomers();
