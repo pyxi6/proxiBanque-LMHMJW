@@ -24,6 +24,14 @@ public class CompteEpargne extends Compte{
 		this.taux = taux;
 	}
 
+    
+
+
+	public CompteEpargne(String numCompte, double solde, LocalDate dateCreation, CompteStatus status, Customer customer,
+			TypeCompte type, double taux) {
+		super(numCompte, solde, dateCreation, status, customer, type);
+		this.taux = taux;
+	}
 
 
 	public double getTaux() {
@@ -37,8 +45,15 @@ public class CompteEpargne extends Compte{
 
 	@Override
 	public String toString() {
-		return "CompteEpargne [taux=" + taux + "]";
+		return "CompteEpargne [taux=" + taux + ", getSolde()=" + getSolde() + ", getNumCompte()=" + getNumCompte()
+				+ "]";
 	}
+
+
+//	@Override
+//	public String toString() {
+//		return "CompteEpargne [taux=" + taux + "]";
+//	}
     
     
 }

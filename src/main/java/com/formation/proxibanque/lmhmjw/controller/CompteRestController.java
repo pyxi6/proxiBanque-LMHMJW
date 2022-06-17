@@ -3,6 +3,7 @@ package com.formation.proxibanque.lmhmjw.controller;
 import com.formation.proxibanque.lmhmjw.dto.VirementRequestDTO;
 import com.formation.proxibanque.lmhmjw.entity.*;
 import com.formation.proxibanque.lmhmjw.entity.enums.CompteStatus;
+import com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte;
 import com.formation.proxibanque.lmhmjw.repository.AgenceRepository;
 import com.formation.proxibanque.lmhmjw.repository.CompteCourantRepository;
 import com.formation.proxibanque.lmhmjw.repository.CompteEpargneRepository;
@@ -120,21 +121,21 @@ public class CompteRestController {
  		customerRepository.save(client14);
  		customerRepository.save(client15);
  		
- 		CompteCourant compteCourant1 = new CompteCourant("A100", 360, LocalDate.now(), CompteStatus.ACTIVER, client1, 1000);
- 		CompteCourant compteCourant2 = new CompteCourant("A101", -900, LocalDate.now(), CompteStatus.ACTIVER, client2, 1000);
- 		CompteCourant compteCourant3 = new CompteCourant("A102", 8500, LocalDate.now(), CompteStatus.ACTIVER, client3, 1000);
- 		CompteCourant compteCourant4 = new CompteCourant("A103", 2300, LocalDate.now(), CompteStatus.ACTIVER, client4, 1000);
- 		CompteCourant compteCourant5 = new CompteCourant("A104", -6000, LocalDate.now(), CompteStatus.ACTIVER, client5, 1000);
- 		CompteCourant compteCourant6 = new CompteCourant("A105", 800, LocalDate.now(), CompteStatus.ACTIVER, client6, 1000);
- 		CompteCourant compteCourant7 = new CompteCourant("A106", -930, LocalDate.now(), CompteStatus.ACTIVER, client7, 1000);
- 		CompteCourant compteCourant8 = new CompteCourant("A107", 7003, LocalDate.now(), CompteStatus.ACTIVER, client8, 1000);
- 		CompteCourant compteCourant9 = new CompteCourant("A108", -1006, LocalDate.now(), CompteStatus.ACTIVER, client9, 1000);
- 		CompteCourant compteCourant10 = new CompteCourant("A109", 4005, LocalDate.now(), CompteStatus.ACTIVER, client10, 1000);
- 		CompteCourant compteCourant11= new CompteCourant("A110", -1500, LocalDate.now(), CompteStatus.ACTIVER, client11, 1000);
- 		CompteCourant compteCourant12= new CompteCourant("A111", 9500, LocalDate.now(), CompteStatus.ACTIVER, client12, 1000);
- 		CompteCourant compteCourant13= new CompteCourant("A112", 3604, LocalDate.now(), CompteStatus.ACTIVER, client13, 1000);
- 		CompteCourant compteCourant14= new CompteCourant("A113", -6633, LocalDate.now(), CompteStatus.ACTIVER, client14, 1000);
- 		CompteCourant compteCourant15= new CompteCourant("A114", 3247, LocalDate.now(), CompteStatus.ACTIVER, client15, 1000);
+ 		CompteCourant compteCourant1 = new CompteCourant("A100", 360, LocalDate.now(), CompteStatus.ACTIVER,client1, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant2 = new CompteCourant("A101", -900, LocalDate.now(), CompteStatus.ACTIVER,client2, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant3 = new CompteCourant("A102", 8500, LocalDate.now(), CompteStatus.ACTIVER,client3, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant4 = new CompteCourant("A103", 2300, LocalDate.now(), CompteStatus.ACTIVER,client4, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant5 = new CompteCourant("A104", -6000, LocalDate.now(), CompteStatus.ACTIVER, client5, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant6 = new CompteCourant("A105", 800, LocalDate.now(), CompteStatus.ACTIVER,client6, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant7 = new CompteCourant("A106", -930, LocalDate.now(), CompteStatus.ACTIVER, client7, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant8 = new CompteCourant("A107", 7003, LocalDate.now(), CompteStatus.ACTIVER, client8, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant9 = new CompteCourant("A108", -1006, LocalDate.now(), CompteStatus.ACTIVER, client9, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant10 = new CompteCourant("A109", 4005, LocalDate.now(), CompteStatus.ACTIVER, client10, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant11= new CompteCourant("A110", -1500, LocalDate.now(), CompteStatus.ACTIVER, client11, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant12= new CompteCourant("A111", 9500, LocalDate.now(), CompteStatus.ACTIVER, client12, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant13= new CompteCourant("A112", 3604, LocalDate.now(), CompteStatus.ACTIVER, client13, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant14= new CompteCourant("A113", -6633, LocalDate.now(), CompteStatus.ACTIVER, client14, TypeCompte.COURANT ,1000);
+ 		CompteCourant compteCourant15= new CompteCourant("A114", 3247, LocalDate.now(), CompteStatus.ACTIVER, client15, TypeCompte.COURANT ,1000);
 
 
  		compteCourantRepository.save(compteCourant1);
@@ -153,11 +154,11 @@ public class CompteRestController {
  		compteCourantRepository.save(compteCourant14);
  		compteCourantRepository.save(compteCourant15);
  		
- 		CompteEpargne compteEpargne1 = new CompteEpargne("B100", 0, LocalDate.now(), CompteStatus.ACTIVER, client1, 3);
- 		CompteEpargne compteEpargne2 = new CompteEpargne("B101", 500000, LocalDate.now(), CompteStatus.ACTIVER, client3, 3);
- 		CompteEpargne compteEpargne3 = new CompteEpargne("B102", 0, LocalDate.now(), CompteStatus.ACTIVER, client5, 3);
- 		CompteEpargne compteEpargne4 = new CompteEpargne("B103", 35000, LocalDate.now(), CompteStatus.ACTIVER, client8, 3);
- 		CompteEpargne compteEpargne5 = new CompteEpargne("B104", 1200, LocalDate.now(), CompteStatus.ACTIVER, client2, 4);
+ 		CompteEpargne compteEpargne1 = new CompteEpargne("B100", 0, LocalDate.now(), CompteStatus.ACTIVER, client1, TypeCompte.EPARGNE ,3);
+ 		CompteEpargne compteEpargne2 = new CompteEpargne("B101", 500000, LocalDate.now(), CompteStatus.ACTIVER, client3,TypeCompte.EPARGNE , 3);
+ 		CompteEpargne compteEpargne3 = new CompteEpargne("B102", 0, LocalDate.now(), CompteStatus.ACTIVER, client5,TypeCompte.EPARGNE , 3);
+ 		CompteEpargne compteEpargne4 = new CompteEpargne("B103", 35000, LocalDate.now(), CompteStatus.ACTIVER, client8,TypeCompte.EPARGNE , 3);
+ 		CompteEpargne compteEpargne5 = new CompteEpargne("B104", 1200, LocalDate.now(), CompteStatus.ACTIVER, client2,TypeCompte.EPARGNE , 4);
  		
  		
  		compteEpargneRepository.save(compteEpargne1);

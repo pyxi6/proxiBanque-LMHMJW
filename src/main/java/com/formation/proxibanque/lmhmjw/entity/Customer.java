@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -24,7 +25,7 @@ public class Customer {
 	// dans la classe compte le Customer est representer par  l'attribu customer
 	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
-	private Collection<Compte> comptes;
+	private List<Compte> comptes;
 
 	@JsonIgnore
 	@ManyToOne
@@ -132,11 +133,11 @@ public class Customer {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	public Collection<Compte> getComptes() {
+	public List<Compte> getComptes() {
 		return comptes;
 	}
 
-	public void setComptes(Collection<Compte> comptes) {
+	public void List(List<Compte> comptes) {
 		this.comptes = comptes;
 	}
 	
@@ -159,7 +160,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", numTel=" + numTel + ", adresse="
-				+ adresse + ", conseiller=" + conseiller + ", agence=" + agence + "]";
+				+ adresse +",compte=" + comptes;
 	}
 
 
