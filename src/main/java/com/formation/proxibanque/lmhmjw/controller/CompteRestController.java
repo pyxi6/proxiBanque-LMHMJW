@@ -155,7 +155,7 @@ public class CompteRestController {
  		CompteEpargne compteEpargne2 = new CompteEpargne("B101", 500000, LocalDate.now(), CompteStatus.ACTIVER, client3, 3);
  		CompteEpargne compteEpargne3 = new CompteEpargne("B102", 0, LocalDate.now(), CompteStatus.ACTIVER, client5, 3);
  		CompteEpargne compteEpargne4 = new CompteEpargne("B103", 35000, LocalDate.now(), CompteStatus.ACTIVER, client8, 3);
- 		CompteEpargne compteEpargne5 = new CompteEpargne("B104", 1200, LocalDate.now(), CompteStatus.ACTIVER, client2, 4);
+ 		CompteEpargne compteEpargne5 = new CompteEpargne("B104", 1200, LocalDate.now(), CompteStatus.ACTIVER, client2, 3);
  		
  		
  		compteRepository.save(compteEpargne1);
