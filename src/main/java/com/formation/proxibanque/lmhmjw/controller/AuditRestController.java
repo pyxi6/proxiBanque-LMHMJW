@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.formation.proxibanque.lmhmjw.entity.Customer;
@@ -47,6 +48,11 @@ public class AuditRestController {
 	@GetMapping(path ="/directeur/customersARisques")
 	public List<Customer> getCustomersARisque() {
 		return auditService.ListCustomerARisque();
+	}
+	
+	@GetMapping(path = "/directeur/tauxOccupation/{id}")
+	public double GetTauxOccupationParConseiller(@PathVariable Long id) {
+		return auditService.getNombreClientParConseiller(id)*10;
 	}
 	
 	

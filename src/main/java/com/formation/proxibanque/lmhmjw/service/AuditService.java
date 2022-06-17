@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.formation.proxibanque.lmhmjw.entity.Compte;
 import com.formation.proxibanque.lmhmjw.entity.CompteCourant;
@@ -14,6 +15,7 @@ import com.formation.proxibanque.lmhmjw.entity.Customer;
 import com.formation.proxibanque.lmhmjw.repository.CompteCourantRepository;
 import com.formation.proxibanque.lmhmjw.repository.CompteEpargneRepository;
 import com.formation.proxibanque.lmhmjw.repository.CompteRepository;
+import com.formation.proxibanque.lmhmjw.repository.ConseillerRepository;
 import com.formation.proxibanque.lmhmjw.repository.CustomerRepository;
 import com.formation.proxibanque.lmhmjw.repository.DirecteurRepository;
 
@@ -31,11 +33,15 @@ public class AuditService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private ConseillerRepository conseillerRepository;
 
 	@Override
 	public String toString() {
 		return "AuditService [compteRepository=" + compteRepository + "]";
 	}
+	
 
 	public double getSoldeTotal() {
 
@@ -146,5 +152,18 @@ public class AuditService {
 		return customerARisque;
 
 	}
+	
+	public int getNombreClientParConseiller(Long id) {
+		List<Customer> customers = conseillerRepository.findById(id).get().getCustomers();
+		int nombreDeClient=0;
+		for (int i = 0; i < customers.size(); i++) {
+			nombreDeClient +=1;
+			
+		}
+				
+		return nombreDeClient;
+		
+	}
+	
 
 }
