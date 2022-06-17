@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<script src="https://kit.fontawesome.com/faf1b41247.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" th:href="@{css/StyleSheet.css}">
+</head>
+<body>
+	<div class="container is-max-desktop"  th:switch="${conseillers}">
+		<div class="collumns">
+			<div class="collumn centering ">
+				<img alt="Logo" class="image" width="50%" th:src="@{img/logo_proxiBanqueSI.png}">
+			</div>
+		</div>
+    <h2 th:case="null">No persons yet!</h2>
+    <div th:case="*">
+            <h2 class="title"  >Liste de nos clients</h2>
+            <div class="centering">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+	                <tr th:each="conseiller : ${conseillers}">
+	                    <td th:text="${conseiller.personne.prenom}"></td>
+	                    <td th:text="${conseiller.personne.nom}"></td>
+	                    <td><a>
+	                    	<span class="icon">
+	  							<i class="fa-solid fa-eye"></i>
+							</span></a>
+						</td>
+	                </tr>
+	            </tbody>
+	        </table>
+	        </div>
+	</div>
+</body>
+</html>

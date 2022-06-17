@@ -21,7 +21,6 @@ public class CustomerUIController {
 	private CustomerServiceImpl customerServiceImpl;
 
 	public CustomerUIController(CustomerServiceImpl customerServiceImpl) {
-		super();
 		this.customerServiceImpl = customerServiceImpl;
 	}
 
