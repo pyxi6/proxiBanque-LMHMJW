@@ -7,7 +7,11 @@
 </head>
 <body>
 	<div class="container is-max-desktop">
-		<div class="">
+		<div class="collumns">
+			<div class="collumn centering ">
+				<img alt="Logo" class="image" width="50%" th:src="@{img/logo_proxiBanqueSI.png}">
+			</div>
+		</div>
 		<h2 class="title">Nouveau Client</h2>
 		<a th:href="@{/customersWeb}" >Retour</a>
 		<form action="/customersWeb/addClient" method="POST"

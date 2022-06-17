@@ -133,10 +133,6 @@ public class Customer {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	
-	
-
-	
 	public List<Compte> getComptes() {
 		return comptes;
 	}
@@ -164,7 +160,7 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", numTel=" + numTel + ", adresse="
-				+ adresse + ", conseiller=" + conseiller + ", agence=" + agence + "]";
+				+ adresse +",compte=" + comptes;
 	}
 
 

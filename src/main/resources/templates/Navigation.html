@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Navigation</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	<script src="https://kit.fontawesome.com/faf1b41247.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" th:href="@{css/StyleSheet.css}">
+</head>
+<body>
+	<div class="container is-max-desktop">
+		<div class="collumns">
+			<div class="collumn centering ">
+				<img alt="Logo" class="image" width="50%" th:src="@{img/logo_proxiBanqueSI.png}">
+			</div>
+		</div>
+		<div class="collumns">
+			<span class=" collumn centering">
+				<a class="button buttonajust is-large is-info" th:href="@{/customersWeb}">Gestion des clients</a>
+			</span>
+		</div>
+		<div class="collumns">
+			<span class=" collumn centering">
+				<a class="button centering buttonajust is-large is-info">Gestion des conseillers</a>
+			</span>
+		</div>
+		<div class="collumns">
+			<span class=" collumn centering">
+				<a class="button centering buttonajust is-large is-info">Statistique</a>
+			</span>
+		</div>
+	</div>
+</body>
+</html>

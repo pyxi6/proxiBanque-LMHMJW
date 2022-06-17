@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.centering{
+	display: flex;
+	justify-content:center;
+}
+
+.buttonajust{
+	margin: 2%;
+}

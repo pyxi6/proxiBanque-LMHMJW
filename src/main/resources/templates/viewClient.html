@@ -3,23 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <title>Dossier Client</title>
-<link rel="stylesheet"	href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	<script src="https://kit.fontawesome.com/faf1b41247.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" th:href="@{css/StyleSheet.css}">
 </head>
 <body>
 	<div class="container is-max-desktop">
+		<div class="collumns">
+			<div class="collumn centering">
+				<img alt="Logo" class="image" width="50%" th:src="@{img/logo_proxiBanqueSI.png}">
+			</div>
+		</div>
 		<h1 class="title" >Dossier Client</h1>
-		<a th:href="@{/customersWeb}" >Retour</a>
 		<div class="columns">
 			<div class="column">
-			 <p th:text="${customer.prenom}+ ' ' + ${customer.nom}">
-			 <p th:text="${customer.adresse.numEtRue}+ ' ' + ${customer.adresse.codePostal} + ' '+ ${customer.adresse.ville}">
-			 <p th:text="${customer.numTel}">
+				 <h1 class="subtitle">Information client</h1>
+				 <p th:text="${customer.prenom}+ ' ' + ${customer.nom}">
+				 <p th:text="${customer.adresse.numEtRue}+ ' ' + ${customer.adresse.codePostal} + ' '+ ${customer.adresse.ville}">
+				 <p th:text="${customer.numTel}">
 			</div>
 			<div class="column">
-				<p th:text="${customer.comptes}">
+				<h1 class="subtitle">Compte client</h1>
+				<div class="columns" th:each="compte: ${customer.comptes}">
+					<div class="column" th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).COURANT}" >compte courant n°<span th:text="${compte.numCompte}"></span></div>
+					<div class="column" th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).EPARGNE}" >compte épargne n°<span th:text="${compte.numCompte}"></span></div>			
+					<div class="column">Solde: <span th:text="${compte.solde} +'€' "></span> </div>
+					<div class="column"><a class='button'>Effectuer un virement</a> </div>
+				</div>
+				<div class="columns">
+					<h1 class="subtitle">Opération client</h1>
+				</div>
+				<div class="columns"  th:each="compte: ${customer.comptes}">
+					<div class="column" >
+					<h1 class="subtitle" th:text="${compte.numCompte}"></h1>
+						<table class="table" >
+							<thead>
+								<tr>
+		                    		<th>opération</th>
+		                    		<th>date</th>
+		                    		<th>Montant</th>
+		                    	<tr>
+		                    </thead>
+		                	<tbody>
+		                		<tr th:each="op: ${compte.opperations}">
+		                			<td th:text="${op.typeOpperation}"></td>
+		                			<td th:text="${op.dateOperation}"></td>
+		                			<td th:text="${op.montant}"></td>
+		                		</tr>
+		                	</tbody>
+		                    
+						</table>
+					</div>
+				</div>
 			</div>
-		
 		</div>
-	</div>
+		<a class="button buttonajust is-primary " th:href="@{/customersWeb}" >Retour</a>
 </body>
 </html>

@@ -46,6 +46,7 @@ public  class Compte {
     private TypeCompte type;
 
 	public Compte() {
+		
 	}
 
 
@@ -61,11 +62,16 @@ public  class Compte {
 		this.customer = customer;
 	}
 
-
-
-
-
-
+	public Compte(String numCompte, double solde, LocalDate dateCreation, CompteStatus status, Customer customer,
+			TypeCompte type) {
+		super();
+		this.numCompte = numCompte;
+		this.solde = solde;
+		this.dateCreation = dateCreation;
+		this.status = status;
+		this.customer = customer;
+		this.type = type;
+	}
 
 
 

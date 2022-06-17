@@ -2,16 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Liste des clients</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-<script src="https://kit.fontawesome.com/faf1b41247.js" crossorigin="anonymous"></script>
+	<title>Liste des clients</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	<script src="https://kit.fontawesome.com/faf1b41247.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" th:href="@{css/StyleSheet.css}">
 </head>
 <body>
 <div class="container is-max-desktop"  th:switch="${customers}">
+<div class="collumns">
+	<div class="collumn centering">
+		<img alt="Logo" class="image" width="50%" th:src="@{img/logo_proxiBanqueSI.png}">
+	</div>
+</div>
     <h2 th:case="null">No persons yet!</h2>
         <div th:case="*">
             <h2 class="title"  >Liste de nos clients</h2>
-            <table class="table is-centered">
+            <div class="centering">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Nom</th>
@@ -31,7 +38,7 @@
                     	<span class="icon">
   							<i class="fa-solid fa-eye"></i>
 						</span></a>
-						<a th:href="@{/delete/{id}(id=${customer.id})}">
+						<a th:href="@{/customersWeb/delete/{id}(id=${customer.id})}">
 						<span class="icon">
   							<i class="fa-solid fa-xmark"></i>
 						</span></a>
@@ -39,7 +46,20 @@
                 </tr>
             </tbody>
         </table>
-    </div>      
-    <p><a class="button" href="/customersWeb/addClient">Add a new person</a></p>
+        </div>
+    </div>  
+    <br>    
+    <div class="collumns">
+	    <p class="collumn centering">
+	    	<a class="button buttonajust is-link " href="/customersWeb/addClient">
+				</span>Ajouter un client
+			</a>
+			
+			<a class="button buttonajust is-info" href="/">
+	    		Retour
+			</a>
+		</p>
+	</div>
+    <br>
 </body>
 </html>

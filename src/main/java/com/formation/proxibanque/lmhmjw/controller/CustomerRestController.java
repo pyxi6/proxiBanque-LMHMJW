@@ -36,22 +36,6 @@ public class CustomerRestController {
 		this.customerServiceImpl = customerServiceImpl;
 	}
 	
-	Adresse adresse1 = new Adresse("1 rue Jamin", "93210", "Saint-Denis");
-	Adresse adresse2 = new Adresse("2 rue de la liberté", "93654", "Boulogne");
-	Adresse adresse3 = new Adresse("9 rue Hype", "32654", "Pzerlimpin");
-
-
-	@PostConstruct
-	public void dateLoaderCustomer(){
-		List<Customer> listeCustomers= List.of(
-				new Customer("Jean", "Neige", "123456", adresse1),
-				new Customer("Marc", "Boue", "12348996", adresse2),
-				new Customer("Karim", "Benhamou", "1264545", adresse3)
-				
-   		);
-		
-		customerRepository.saveAll(listeCustomers);
-	}
 
 	@GetMapping(path = "/customers")
 	public List<Customer> listAllCustomers() {

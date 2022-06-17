@@ -43,6 +43,7 @@ public class CustomerServiceImpl {
 	public Customer saveCustomerService(Customer customer) {
 		Conseiller c = findFreeConseiller();
 		customer.setConseiller(c);
+		customer.setAgence(c.getAgence());
 		return customerRepository.save(customer);		
 		
 	}
@@ -57,6 +58,8 @@ public class CustomerServiceImpl {
 		}
 		return consChoisi;
 	}
+	
+	
 
 	public Customer updateCustommerService(@PathVariable Long id, @RequestBody Customer customer) {
 		customer.setId(id);

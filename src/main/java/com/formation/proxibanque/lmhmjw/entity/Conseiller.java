@@ -44,8 +44,6 @@ public class Conseiller{
 		this.personne = personne;
 	}
 	
-	
-
 	public Conseiller(Personne personne, Agence agence) {
 		this.personne = personne;
 		this.agence = agence;
