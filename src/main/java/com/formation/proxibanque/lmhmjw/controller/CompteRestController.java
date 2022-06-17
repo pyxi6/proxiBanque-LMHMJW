@@ -48,9 +48,7 @@ public class CompteRestController {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
-	
- 	
- 	
+
  	
  	@PostConstruct
  	public void dataLoaderAgence() {
@@ -137,21 +135,21 @@ public class CompteRestController {
  		CompteCourant compteCourant15= new CompteCourant("A114", 3247, LocalDate.now(), CompteStatus.ACTIVER, client15, 1000);
 
 
- 		compteCourantRepository.save(compteCourant1);
- 		compteCourantRepository.save(compteCourant2);
- 		compteCourantRepository.save(compteCourant3);
- 		compteCourantRepository.save(compteCourant4);
- 		compteCourantRepository.save(compteCourant5);
- 		compteCourantRepository.save(compteCourant6);
- 		compteCourantRepository.save(compteCourant7);
- 		compteCourantRepository.save(compteCourant8);
- 		compteCourantRepository.save(compteCourant9);
- 		compteCourantRepository.save(compteCourant10);
- 		compteCourantRepository.save(compteCourant11);
- 		compteCourantRepository.save(compteCourant12);
- 		compteCourantRepository.save(compteCourant13);
- 		compteCourantRepository.save(compteCourant14);
- 		compteCourantRepository.save(compteCourant15);
+ 		compteRepository.save(compteCourant1);
+ 		compteRepository.save(compteCourant2);
+ 		compteRepository.save(compteCourant3);
+ 		compteRepository.save(compteCourant4);
+ 		compteRepository.save(compteCourant5);
+ 		compteRepository.save(compteCourant6);
+ 		compteRepository.save(compteCourant7);
+ 		compteRepository.save(compteCourant8);
+ 		compteRepository.save(compteCourant9);
+ 		compteRepository.save(compteCourant10);
+ 		compteRepository.save(compteCourant11);
+ 		compteRepository.save(compteCourant12);
+ 		compteRepository.save(compteCourant13);
+ 		compteRepository.save(compteCourant14);
+ 		compteRepository.save(compteCourant15);
  		
  		CompteEpargne compteEpargne1 = new CompteEpargne("B100", 0, LocalDate.now(), CompteStatus.ACTIVER, client1, 3);
  		CompteEpargne compteEpargne2 = new CompteEpargne("B101", 500000, LocalDate.now(), CompteStatus.ACTIVER, client3, 3);
@@ -160,23 +158,18 @@ public class CompteRestController {
  		CompteEpargne compteEpargne5 = new CompteEpargne("B104", 1200, LocalDate.now(), CompteStatus.ACTIVER, client2, 4);
  		
  		
- 		compteEpargneRepository.save(compteEpargne1);
- 		compteEpargneRepository.save(compteEpargne2);
- 		compteEpargneRepository.save(compteEpargne3);
- 		compteEpargneRepository.save(compteEpargne4);
- 		compteEpargneRepository.save(compteEpargne5);
+ 		compteRepository.save(compteEpargne1);
+ 		compteRepository.save(compteEpargne2);
+ 		compteRepository.save(compteEpargne3);
+ 		compteRepository.save(compteEpargne4);
+ 		compteRepository.save(compteEpargne5);
 
 
-
- 		
  		
  	}
 
      
-
-           
- 
-
+        
 
     public CompteRestController(CompteService compteService) {
         this.compteService = compteService;

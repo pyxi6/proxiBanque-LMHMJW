@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.formation.proxibanque.lmhmjw.entity.Conseiller;
 import com.formation.proxibanque.lmhmjw.entity.Directeur;
 import com.formation.proxibanque.lmhmjw.repository.DirecteurRepository;
 
@@ -38,6 +39,6 @@ public class DirecteurServiceImpl {
 	public void eraseDirecteurById(Long id) {
 		directeurRepository.deleteById(id);
 	}
-	
+		
 	
 }
