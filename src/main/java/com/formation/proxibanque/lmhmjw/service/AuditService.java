@@ -122,4 +122,29 @@ public class AuditService {
 
 	}
 
+
+
+	public List<Customer> ListCustomerARisque() {
+
+		List<Customer> customers = customerRepository.findAll();
+		List<Customer> customerARisque = new ArrayList<>();
+
+		for (Customer customer : customers) {
+			List<Compte> comptes = customer.getComptes();
+			double soldeTotal = 0;
+
+			for (int i = 0; i < comptes.size(); i++) {
+				soldeTotal += comptes.get(i).getSolde();
+
+			}
+
+			if (soldeTotal < -5000) {
+				customerARisque.add(customer);
+			}
+
+		}
+		return customerARisque;
+
+	}
+
 }

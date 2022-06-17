@@ -44,6 +44,11 @@ public class AuditRestController {
 		return auditService.ListCustomersPremium();
 	}
 	
+	@GetMapping(path ="/directeur/customersARisques")
+	public List<Customer> getCustomersARisque() {
+		return auditService.ListCustomerARisque();
+	}
+	
 	
 	
 
