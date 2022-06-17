@@ -7,11 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.formation.proxibanque.lmhmjw.entity.Customer;
-import com.formation.proxibanque.lmhmjw.repository.CustomerRepository;
 import com.formation.proxibanque.lmhmjw.service.CustomerServiceImpl;
 
 @Controller
@@ -57,7 +54,7 @@ public class CustomerUIController {
 	}
 	@GetMapping("/")
 	public String index() {
-		return "Navigation";
+		return "index";
 	}
 
 	 
