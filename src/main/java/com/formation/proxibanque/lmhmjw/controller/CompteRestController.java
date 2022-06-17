@@ -1,5 +1,6 @@
 package com.formation.proxibanque.lmhmjw.controller;
 
+import com.formation.proxibanque.lmhmjw.dto.VirementDTO;
 import com.formation.proxibanque.lmhmjw.dto.VirementRequestDTO;
 import com.formation.proxibanque.lmhmjw.entity.*;
 import com.formation.proxibanque.lmhmjw.entity.enums.CompteStatus;
@@ -154,6 +155,7 @@ public class CompteRestController {
  		compteCourantRepository.save(compteCourant14);
  		compteCourantRepository.save(compteCourant15);
  		
+
  		CompteEpargne compteEpargne1 = new CompteEpargne("B100", 0, LocalDate.now(), CompteStatus.ACTIVER, client1, TypeCompte.EPARGNE ,3);
  		CompteEpargne compteEpargne2 = new CompteEpargne("B101", 500000, LocalDate.now(), CompteStatus.ACTIVER, client3,TypeCompte.EPARGNE , 3);
  		CompteEpargne compteEpargne3 = new CompteEpargne("B102", 0, LocalDate.now(), CompteStatus.ACTIVER, client5,TypeCompte.EPARGNE , 3);
@@ -170,13 +172,8 @@ public class CompteRestController {
 
 
  		
- 		
  	}
 
-     
-
-           
- 
 
 
     public CompteRestController(CompteService compteService) {
@@ -187,6 +184,16 @@ public class CompteRestController {
     @GetMapping(path = "/comptes")
     public List<Compte> ListComptes(){
         return compteService.listComptes();
+    }
+    
+    @GetMapping(path = "/comptes/courant")
+    public List<CompteCourant> listComptesCourant(){
+        return  compteService.listComptesCourants();
+    }
+    
+    @GetMapping(path = "/comptes/epargne")
+    public List<CompteEpargne> listComptesEpargnes(){
+        return compteService.listeCompteEpargnes();
     }
 
     @GetMapping(path = "/comptes/{compteId}")
@@ -200,10 +207,7 @@ public class CompteRestController {
     }
 
     @PostMapping(path = "/comptes/epargne")
-    public CompteEpargne saveCompteEpargne(@RequestBody CompteEpargne compteEpargne){
-        System.out.println("------------------------------------");
-        System.out.println("#####################################");
-        System.out.println("------------------------------------");
+    public CompteEpargne saveCompteEpargne(@RequestBody CompteEpargne compteEpargne){        
         System.out.println(compteEpargne);
         return compteEpargneRepository.save(compteEpargne);
     }
@@ -221,9 +225,10 @@ public class CompteRestController {
     }
 
     @PutMapping(path = "/comptes/virement")
-    public void virement(@RequestBody VirementRequestDTO requestDTO){
-        compteService.virement(requestDTO.getCodeSource(),
+    public VirementDTO virement(@RequestBody VirementRequestDTO requestDTO){
+        VirementDTO virement = compteService.virement(requestDTO.getCodeSource(),
                 requestDTO.getCodeDestination(), requestDTO.getMontant() );
+        return virement;
     }
 
 }

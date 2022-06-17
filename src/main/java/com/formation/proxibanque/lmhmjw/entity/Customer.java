@@ -24,7 +24,7 @@ public class Customer {
 
 	// dans la classe compte le Customer est representer par  l'attribu customer
 	
-	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private List<Compte> comptes;
 
 	@JsonIgnore
@@ -137,10 +137,10 @@ public class Customer {
 		return comptes;
 	}
 
-	public void List(List<Compte> comptes) {
+	public void setComptes(List<Compte> comptes) {
 		this.comptes = comptes;
 	}
-	
+
 	public Conseiller getConseiller() {
 		return conseiller;
 	}
