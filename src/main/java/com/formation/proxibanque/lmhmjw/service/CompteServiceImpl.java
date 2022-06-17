@@ -143,14 +143,7 @@ public class CompteServiceImpl implements CompteService{
     	Compte compte= getCompte(compteId);
 
     	DebitDTO debitDTO = new DebitDTO();    	
-    	debitDTO.setSoldesAvant(compte.getSolde());
-    	
-    	System.out.println("***************************************************");
-    	System.out.println("Soldes avant virement" + debitDTO.getSoldesAvant());
-    	System.out.println("***************************************************");        
-    	System.out.println("***************************************************");
-    	System.out.println("Montant du virement" + montant );
-    	System.out.println("***************************************************");
+    	debitDTO.setSoldesAvant(compte.getSolde());	    
     	
         if(compte.getSolde() < montant) {
         	debitDTO.setEtatVirement(false);
@@ -169,35 +162,23 @@ public class CompteServiceImpl implements CompteService{
          compteRepository.save(compte);
          
          debitDTO.setSoldesApres(compte.getSolde());
-         
-         System.out.println("***************************************************");
-         System.out.println("soldes Apres virement" + debitDTO.getSoldesApres());
-         System.out.println("***************************************************");
-         
+            
          return debitDTO;
 
     }
 
     @Override
     public CreditDTO crediter(Long compteId, double montant, String description) {
-   	
-    	
+   	    	
         Compte compte= getCompte(compteId);
         CreditDTO creditDTO= new CreditDTO();        
         Opperation opperation = new Opperation();        
         
-        creditDTO.setSoldesAvantCredit(compte.getSolde());
-        System.out.println("------------------------------------------------------");
-        System.out.println("soldes Avant Credi" + creditDTO.getSoldesAvantCredit());
-        System.out.println("------------------------------------------------------");
+        creditDTO.setSoldesAvantCredit(compte.getSolde());      
         
         opperation.setTypeOpperation(TypeOpperation.CREDIT);
         opperation.setMontant(montant);
-        
-        System.out.println("------------------------------------------------------");
-        System.out.println("Montant du virement" + montant);
-        System.out.println("------------------------------------------------------");
-        
+              
         opperation.setDescription(description);
         opperation.setDateOperation(new Date());
         opperation.setCompte(compte);
@@ -207,10 +188,7 @@ public class CompteServiceImpl implements CompteService{
         compteRepository.save(compte);
         
         
-        creditDTO.setSoldesApresCredit(compte.getSolde());
-        System.out.println("------------------------------------------------------");
-        System.out.println("soldes Apres Credi" + creditDTO.getSoldesApresCredit());
-        System.out.println("------------------------------------------------------");
+        creditDTO.setSoldesApresCredit(compte.getSolde()); 
         return creditDTO;
     }
     
@@ -219,9 +197,10 @@ public class CompteServiceImpl implements CompteService{
     public VirementDTO virement(Long compteIdSource, Long compteIdDestinataire, double montant) {
 
     	VirementDTO virementDTO = new VirementDTO();
-        debiter(compteIdSource,montant, "Transfer à "+compteIdDestinataire);
-        crediter(compteIdDestinataire, montant, "Transfer depuis"+compteIdSource);
-        
+        DebitDTO debiter = debiter(compteIdSource,montant, "Transfer à "+compteIdDestinataire);
+        CreditDTO crediter = crediter(compteIdDestinataire, montant, "Transfer depuis"+compteIdSource);
+         virementDTO.setCreditDTO(crediter);
+         virementDTO.setDebitDTO(debiter);
         return virementDTO;
     }
 

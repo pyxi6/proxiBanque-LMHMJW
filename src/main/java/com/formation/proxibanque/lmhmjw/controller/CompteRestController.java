@@ -1,5 +1,6 @@
 package com.formation.proxibanque.lmhmjw.controller;
 
+import com.formation.proxibanque.lmhmjw.dto.VirementDTO;
 import com.formation.proxibanque.lmhmjw.dto.VirementRequestDTO;
 import com.formation.proxibanque.lmhmjw.entity.*;
 import com.formation.proxibanque.lmhmjw.entity.enums.CompteStatus;
@@ -217,9 +218,10 @@ public class CompteRestController {
     }
 
     @PutMapping(path = "/comptes/virement")
-    public void virement(@RequestBody VirementRequestDTO requestDTO){
-        compteService.virement(requestDTO.getCodeSource(),
+    public VirementDTO virement(@RequestBody VirementRequestDTO requestDTO){
+        VirementDTO virement = compteService.virement(requestDTO.getCodeSource(),
                 requestDTO.getCodeDestination(), requestDTO.getMontant() );
+        return virement;
     }
 
 }
