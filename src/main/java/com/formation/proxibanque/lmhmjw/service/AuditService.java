@@ -1,5 +1,6 @@
 package com.formation.proxibanque.lmhmjw.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -82,30 +83,31 @@ public class AuditService {
 		
 	}
 	
-//	public List<Customer> ListCustomersDeficitaires(){
-//		
-//		
-//		List<Customer> customers = customerRepository.findAll();
-//		
-//		for (Customer customer : customers) {
-//			List<Compte> comptes = customer.getComptes();
-//			double soldeTotal = 0;
-//
-//			for (int i = 0; i < comptes.size(); i++ ) {
-//				soldeTotal += comptes.get(i).getSolde() ;
-//				
-//			}
-//			
-//			if (soldeTotal >= 0) {
-//				customers.remove(customer);
-//			}
-//			
-//		}
-//		return customers ;
-//		
-//		
-//	}
-//	
+	public List<Customer> ListCustomersDeficitaires(){
+		
+		
+		List<Customer> customers = customerRepository.findAll();
+		List<Customer> customerdeficitaires = new ArrayList<>();
+		
+		for (Customer customer : customers) {
+			List<Compte> comptes = customer.getComptes();
+			double soldeTotal = 0;
+
+			for (int i = 0; i < comptes.size(); i++ ) {
+				soldeTotal += comptes.get(i).getSolde() ;
+				
+			}
+			
+			if (soldeTotal < 0) {
+				customerdeficitaires.add(customer);
+			}
+			
+		}
+		return customerdeficitaires ;
+		
+		
+	}
+	
 	
 	
 

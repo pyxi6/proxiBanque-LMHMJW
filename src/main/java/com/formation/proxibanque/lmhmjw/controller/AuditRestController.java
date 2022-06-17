@@ -34,11 +34,11 @@ public class AuditRestController {
 		
 	}
 	
-//	@GetMapping(path ="/directeur/customersDeficitaires")
-//	public List<Customer> getCustomersDeficitaires() {
-//		return auditService.ListCustomersDeficitaires();
-//	}
-//	
+	@GetMapping(path ="/directeur/customersDeficitaires")
+	public List<Customer> getCustomersDeficitaires() {
+		return auditService.ListCustomersDeficitaires();
+	}
+	
 	
 
 }
