@@ -4,42 +4,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import com.formation.proxibanque.lmhmjw.repository.CompteCourantRepository;
-import com.formation.proxibanque.lmhmjw.repository.CompteEpargneRepository;
-import com.formation.proxibanque.lmhmjw.repository.CompteRepository;
+import com.formation.proxibanque.lmhmjw.dto.VirementRequestDTO;
+import com.formation.proxibanque.lmhmjw.entity.Virement;
+import com.formation.proxibanque.lmhmjw.service.CompteServiceImpl;
 
 @Controller
 public class CompteUIController {
 	
-	  @Autowired
-	    private CompteRepository compteRepository;
-
-	    @Autowired
-	    private CompteCourantRepository compteCourantRepository;
-
-	    @Autowired
-	    private CompteEpargneRepository compteEpargneRepository;
-	    
-
-		public CompteUIController(CompteRepository compteRepository, CompteCourantRepository compteCourantRepository,
-				CompteEpargneRepository compteEpargneRepository) {
-			this.compteRepository = compteRepository;
-			this.compteCourantRepository = compteCourantRepository;
-			this.compteEpargneRepository = compteEpargneRepository;
-		}
+	  	@Autowired
+	  	private CompteServiceImpl compteServiceImpl;
+	  	
+	  	@Autowired
+	  	private CompteRestController compteRestController;
+	  	
 		
-		@GetMapping("/virement/courant/{id}")
-		public String LoadVirementFromCourant(@PathVariable Long id, Model model) {
-			model.addAttribute("compte", compteCourantRepository.findById(id));
+
+
+
+		public CompteUIController(CompteServiceImpl compteServiceImpl, CompteRestController compteRestController) {
+			this.compteServiceImpl = compteServiceImpl;
+			this.compteRestController = compteRestController;
+		}
+
+		@GetMapping("/virement/{id}")
+		public String LoadVirement(@PathVariable Long id, Model model) {
+			model.addAttribute("compte",compteServiceImpl.getCompte(id));
+			model.addAttribute("virement",new Virement());
 			return "virement";
 		}
 		
-		@GetMapping("/virement/epargne/{id}")
-		public String LoadVirementFromEpargne(@PathVariable Long id, Model model) {
-			model.addAttribute("compte", compteEpargneRepository.findById(id));
-			return "virement";
+		@PostMapping("/virement")
+		public String FaireVirement(@ModelAttribute Virement virement) {
+			String id = compteServiceImpl.getCompte(virement.getCodeSource()).getId().toString();
+			compteServiceImpl.virement(virement.getCodeSource(), virement.getCodeDestination(), virement.getMontant());
+			return "redirect:/customersWeb/"+id;
 		}
 		
 		

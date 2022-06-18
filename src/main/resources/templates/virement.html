@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 	<title>Virement</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-	<link rel="stylesheet" th:href="@{css/StyleSheet.css}">
+	<link rel="stylesheet" th:href="@{/css/StyleSheet.css}">
 </head>
 <body>
 	<div class="container is-max-desktop">
@@ -13,8 +13,30 @@
 				<img alt="Logo" class="image" width="50%"  th:src="@{/img/logo_proxiBanqueSI.png}">
 			</div>
 		</div>
-		<span th:text="${compte}"></span>
-		
+		<form action="/virement" method="POST" th:object="${virement}">
+			<div class="columns">
+				<div class="column">
+					<span>Compte Source:</span><input class="input" th:value="${virement.codeSource} ? ${virement.codeSource}: ${compte.id} " name="codeSource" id="codeSource" type="text" required readonly="readonly" >
+				</div>
+			</div>
+			<div class="columns">
+				<div class="column">
+					<span>Compte à crédité:</span><input class="input"  th:field="*{codeDestination}" th:name="codeDestination"  type="text" required placeholder="compte de destination"  >
+				</div>
+			</div>
+			<div class="columns ">
+				<div class="column">
+					<span>Montant:</span>
+					<input class="input "  th:field="*{montant}" type="number" min="0"  placeholder="montant" required  >
+				</div>
+			</div>
+			<div class="columns ">
+				<div class="column centering">
+					<input class="button buttonajust is-link"  type="submit" value="effectuer le virement"  >
+					<a class="button buttonajust is-info" th:href="@{/customersWeb/{id}(id=${compte.customer.id})}">retour</a>
+				</div>
+			</div>
+		</form>
 		
 	</div>
 </body>

@@ -5,13 +5,13 @@
 <title>Liste des clients</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 <script src="https://kit.fontawesome.com/faf1b41247.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" th:href="@{css/StyleSheet.css}">
+<link rel="stylesheet" th:href="@{/css/StyleSheet.css}">
 </head>
 <body>
 <div class="container is-max-desktop"  th:switch="${customers}">
 <div class="columns">
 	<div class="column centering">
-		<img alt="Logo" class="image" width="50%" th:src="@{img/logo_proxiBanqueSI.png}">
+		<img alt="Logo" class="image" width="50%" th:src="@{/img/logo_proxiBanqueSI.png}">
 	</div>
 </div>
     <h2 th:case="null">No persons yet!</h2>
@@ -49,12 +49,11 @@
         </div>
     </div>  
     <br>    
-    <div class="collumns">
-	    <p class="collumn centering">
+    <div class="columns">
+	    <p class="column centering">
 	    	<a class="button buttonajust is-link " href="/customersWeb/addClient">
 				</span>Ajouter un client
 			</a>
-			
 			<a class="button buttonajust is-info" href="/">
 	    		Retour
 			</a>

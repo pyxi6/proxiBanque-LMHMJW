@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Ajout d'un client</title>
 <link rel="stylesheet"	href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<link rel="stylesheet" th:href="@{/css/StyleSheet.css}">
 </head>
 <body>
 	<div class="container is-max-desktop">
@@ -13,19 +14,46 @@
 			</div>
 		</div>
 		<h2 class="title">Nouveau Client</h2>
-		<a th:href="@{/customersWeb}" >Retour</a>
 		<form action="/customersWeb/addClient" method="POST"
 			th:object="${customer}">
+			<div class="columns ">
+				<div class="column">
 			Prénom: <input class="input" th:field="*{prenom}" type="text" name="prenom" required /> <br /> 
+				</div>
+			</div>
+			<div class="columns ">
+				<div class="column">
 			Nom: <input class="input" th:field="*{nom}" type="text" name="nom" required /> <br /> 
-			N° de téléphone: <input class="input" th:field="*{numTel}" type="text" name="numTel" required /><br />
+				</div>
+			</div>
+			
+			<div class="columns ">
+				<div class="column">
+			N° de téléphone: <input class="input" th:field="*{numTel}" type="text" pattern="[0-9]{10}" name="numTel" required /><br />
+				</div>
+			</div>
+			<div class="columns ">
+				<div class="column">
 			Adresse: <input class="input" th:field="*{adresse.numEtRue}" type="text" name="numEtRue" required /><br />
-			Code Postal: <input class="input" th:field="*{adresse.codePostal}" type="text" name="codePostal" required /><br />
-			Ville: <input class="input" th:field="*{adresse.ville}" type="text" name="ville" required /><br />
-	
-	
-			<!--    Ce bouton m'envoie vers la methode addClient du ClientController-->
-			<input type="submit" value="Ajouter" />
+				</div>
+			</div>
+			<div class="columns ">
+				<div class="column">
+			Code Postal: <input class="input" th:field="*{adresse.codePostal}" type="text" pattern="[0-9]+" name="codePostal" required /><br />
+				</div>
+			</div>
+			<div class="columns ">
+				<div class="column">
+			Ville: <input class="input" th:field="*{adresse.ville}" type="text" name="ville" required /><br/>
+				</div>
+			</div>
+			
+			<div class="columns ">
+				<div class="column centering">
+					<input class="button buttonajust is-link"  type="submit" value="Ajouter" />
+					<a class="button buttonajust is-info" th:href="@{/customersWeb}">retour</a>
+				</div>
+			</div>
 		</form>
 		</div>
 	</div>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Statistiques</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<script src="https://kit.fontawesome.com/faf1b41247.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" th:href="@{/css/StyleSheet.css}">
+</head>
+<body>
+	<div class="container is-max-desktop" >
+		<div class="columns">
+			<div class="column centering">
+				<img alt="Logo" class="image" width="50%" th:src="@{/img/logo_proxiBanqueSI.png}">
+			</div>
+		</div>
+		<div class="level">
+			<div>
+		    	<p class="heading">Solde Total</p>
+		    	<p class="title" th:text="${SoldeTotal}+€"></p>
+		    </div>
+		    <div>
+		    	<p class="heading">Solde des comptes courant</p>
+		    	<p class="subtitle" th:text="${SoldeCourant}+€"></p>
+		    </div>
+		    <div>
+		    	<p class="heading">Solde des comptes épargne</p>
+		    	<p class="subtitle" th:text="${SoldeEpargne}+€"></p>
+		    </div>
+		</div>
+		<div class="columns ">
+			<div class="column" >
+				<p class="title" > Nos clients à risque</p>
+				<table class="table">
+					<thead>
+					    <tr>
+					        <th>Prénom</th>
+					        <th>Nom</th>
+					        <th>Téléphone</th>
+					        <th>Solde</th>
+					    </tr>
+				    </thead>
+			        <tbody>
+			        	<tr th:each="clientsarisque : ${clientsarisque}">
+		                    <td th:text="${clientsarisque.prenom}"></td>
+		                    <td th:text="${clientsarisque.nom}"></td>
+		                    <td th:text="${clientsarisque.numTel}"></td>
+		        			<td>
+		        				<div th:each="compte : ${clientsarisque.comptes}">
+		        					<div>
+		        						<span th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).COURANT}">compte courant:</span>
+		        						<span th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).EPARGNE}">compte épargne:</span>
+		        						<span th:text="${compte.solde}+€"></span>
+		        					</div>
+		        				</div>
+		        			</td>
+			        	</tr>
+			        </tbody>
+				</table>
+			</div>
+			<div class="column" >
+				<p class="title" > Nos clients déficitaires</p>
+				<table class="table">
+					<thead>
+					    <tr>
+					        <th>Prénom</th>
+					        <th>Nom</th>
+					        <th>Téléphone</th>
+					        <th>Solde</th>
+					    </tr>
+				    </thead>
+			        <tbody>
+			        	<tr th:each="clientsdeficit : ${clientsdeficit}">
+		                    <td th:text="${clientsdeficit.prenom}"></td>
+		                    <td th:text="${clientsdeficit.nom}"></td>
+		                    <td th:text="${clientsdeficit.numTel}"></td>
+		        			<td>
+		        				<div th:each="compte : ${clientsdeficit.comptes}">
+		        					<div>
+		        						<span th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).COURANT}">compte courant:</span>
+		        						<span th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).EPARGNE}">compte épargne:</span>
+		        						<span th:text="${compte.solde}+€"></span>
+		        					</div>
+		        				</div>
+		        			</td>
+			        	</tr>
+			        </tbody>
+				</table>
+			</div>
+		</div>
+		<div class="columns">
+			<div class="column">
+				<p class="title" > Nos clients Premiums</p>
+				<table class="table">
+					<thead>
+					    <tr>
+					        <th>Prénom</th>
+					        <th>Nom</th>
+					        <th>Téléphone</th>
+					        <th>Solde</th>
+					    </tr>
+				    </thead>
+			        <tbody>
+			        	<tr th:each="clientsPremium : ${clientsPremium}">
+		                    <td th:text="${clientsPremium.prenom}"></td>
+		                    <td th:text="${clientsPremium.nom}"></td>
+		                    <td th:text="${clientsPremium.numTel}"></td>
+		        			<td>
+		        				<div th:each="compte : ${clientsPremium.comptes}">
+		        					<div>
+		        						<span th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).COURANT}">compte courant:</span>
+		        						<span th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).EPARGNE}">compte épargne:</span>
+		        						<span th:text="${compte.solde}+€"></span>
+		        					</div>
+		        				</div>
+		        			</td>
+			        	</tr>
+			        </tbody>
+				</table>
+			</div>
+		</div>
+		<div class="columns">
+			<div class="column centering ">
+				<a class="button buttonajust is-info" href="/">
+	    		Retour
+				</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
