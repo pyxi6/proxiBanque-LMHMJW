@@ -45,10 +45,12 @@ public class CompteCourant  extends  Compte{
 
 	@Override
 	public String toString() {
-		return "CompteCourant [decouvert=" + decouvert + ", getSolde()=" + getSolde() + ", getDateCreation()="
-				+ getDateCreation()  + ", getNumCompte()=" + getNumCompte()
-				+ "]";
+		return "CompteCourant [decouvert=" + decouvert + ", getId()=" + getId() + ", getSolde()=" + getSolde()
+				+ ", getDateCreation()=" + getDateCreation() + ", getStatus()=" + getStatus() + ", getNumCompte()="
+				+ getNumCompte() + "]";
 	}
+
+	
 
 	
 

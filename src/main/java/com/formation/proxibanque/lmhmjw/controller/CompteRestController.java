@@ -1,8 +1,30 @@
 package com.formation.proxibanque.lmhmjw.controller;
 
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+
 import com.formation.proxibanque.lmhmjw.dto.VirementDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.formation.proxibanque.lmhmjw.dto.VirementRequestDTO;
-import com.formation.proxibanque.lmhmjw.entity.*;
+import com.formation.proxibanque.lmhmjw.entity.Adresse;
+import com.formation.proxibanque.lmhmjw.entity.Agence;
+import com.formation.proxibanque.lmhmjw.entity.Compte;
+import com.formation.proxibanque.lmhmjw.entity.CompteCourant;
+import com.formation.proxibanque.lmhmjw.entity.CompteEpargne;
+import com.formation.proxibanque.lmhmjw.entity.Conseiller;
+import com.formation.proxibanque.lmhmjw.entity.Customer;
+import com.formation.proxibanque.lmhmjw.entity.Directeur;
+import com.formation.proxibanque.lmhmjw.entity.Personne;
 import com.formation.proxibanque.lmhmjw.entity.enums.CompteStatus;
 import com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte;
 import com.formation.proxibanque.lmhmjw.repository.AgenceRepository;
@@ -13,13 +35,6 @@ import com.formation.proxibanque.lmhmjw.repository.ConseillerRepository;
 import com.formation.proxibanque.lmhmjw.repository.CustomerRepository;
 import com.formation.proxibanque.lmhmjw.repository.DirecteurRepository;
 import com.formation.proxibanque.lmhmjw.service.CompteService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.PostConstruct;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @RestController
 public class CompteRestController {
@@ -230,7 +245,6 @@ public class CompteRestController {
         System.out.println(compteEpargne);
         return compteEpargneRepository.save(compteEpargne);
     }
-
 
     @PutMapping(path = "/comptes/{countId}")
     public Compte updateCompte(@PathVariable Long countId,@RequestBody Compte compte ){
