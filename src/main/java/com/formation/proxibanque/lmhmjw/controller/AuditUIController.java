@@ -24,8 +24,8 @@ public class AuditUIController {
 		model.addAttribute("SoldeCourant", auditService.getSoldeCourant());
 		model.addAttribute("SoldeEpargne", auditService.getSoldeEpargne());
 		model.addAttribute("clientsarisque", auditService.ListCustomerARisque() );
-		model.addAttribute("clientsdeficit", auditService.ListCustomersDeficitaires() );
-		model.addAttribute("clientsPremium", auditService.ListCustomersPremium() );
+		model.addAttribute("clientsdeficit", auditService.listCustomersDeficitaires());
+		model.addAttribute("clientsPremium", auditService.listCustomersPremium() );
 		
 		return "Audit";
 	}

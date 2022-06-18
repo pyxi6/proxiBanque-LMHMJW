@@ -29,7 +29,7 @@
 					<div class="column" th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).EPARGNE}" >compte épargne n°<span th:text="${compte.numCompte}"></span></div>			
 					<div class="column">Solde: <span th:text="${compte.solde} +'€' "></span> </div>
 					<div class="column">
-						<a th:href="@{/virement/{id}(id=${compte.id})}" class='button'>Effectuer un virement</a> 	
+						<a th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).COURANT}" th:href="@{/virement/{id}(id=${compte.id})}" class='button'>Effectuer un virement</a> 	
 					</div>
 				</div>
 				<div class="columns">
