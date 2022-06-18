@@ -21,7 +21,7 @@
 			</div>
 			<div class="columns">
 				<div class="column">
-					<span>Compte à crédité:</span><input class="input"  th:field="*{codeDestination}" th:name="codeDestination"  type="text" required placeholder="compte de destination"  >
+					<span>Compte destinataire:</span><input class="input"  th:field="*{codeDestination}" th:name="codeDestination"  type="text" required placeholder="compte de destination"  >
 				</div>
 			</div>
 			<div class="columns ">
@@ -32,8 +32,8 @@
 			</div>
 			<div class="columns ">
 				<div class="column centering">
-					<input class="button buttonajust is-link"  type="submit" value="effectuer le virement"  >
-					<a class="button buttonajust is-info" th:href="@{/customersWeb/{id}(id=${compte.customer.id})}">retour</a>
+					<input class="button buttonajust is-link"  type="submit" value="Effectuer le virement"  >
+					<a class="button buttonajust is-info" th:href="@{/customersWeb/{id}(id=${compte.customer.id})}">Retour</a>
 				</div>
 			</div>
 		</form>

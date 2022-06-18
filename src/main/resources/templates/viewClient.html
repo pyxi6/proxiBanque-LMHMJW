@@ -23,17 +23,17 @@
 				 <p th:text="${customer.numTel}">
 			</div>
 			<div class="column">
-				<h1 class="subtitle">Compte client</h1>
+				<h1 class="subtitle">Comptes client</h1>
 				<div class="columns" th:each="compte: ${customer.comptes}">
 					<div class="column" th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).COURANT}" >compte courant n°<span th:text="${compte.numCompte}"></span></div>
 					<div class="column" th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).EPARGNE}" >compte épargne n°<span th:text="${compte.numCompte}"></span></div>			
 					<div class="column">Solde: <span th:text="${compte.solde} +'€' "></span> </div>
 					<div class="column">
-						<a th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).COURANT}" th:href="@{/virement/{id}(id=${compte.id})}" class='button'>Effectuer un virement</a> 	
+						<a th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).COURANT}" th:href="@{/virement/{id}(id=${compte.id})}" class='button is-link'>Effectuer un virement</a> 	
 					</div>
 				</div>
 				<div class="columns">
-					<h1 class="subtitle">Opération client</h1>
+					<h1 class="subtitle">Opérations client</h1>
 				</div>
 				<div class="columns"  th:each="compte: ${customer.comptes}">
 					<div class="column" >
@@ -41,7 +41,7 @@
 						<table class="table" >
 							<thead>
 								<tr>
-		                    		<th>opération</th>
+		                    		<th>Opération</th>
 		                    		<th>date</th>
 		                    		<th>Montant</th>
 		                    	<tr>
