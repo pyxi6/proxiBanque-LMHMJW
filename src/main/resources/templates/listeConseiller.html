@@ -23,12 +23,14 @@
 	                    <tr>
 	                        <th>Nom</th>
 	                        <th>Prénom</th>
+	                        <th>Nb Client</th>
 	                    </tr>
 	                </thead>
 	                <tbody>
 		                <tr th:each="conseiller : ${conseillers}">
 		                    <td th:text="${conseiller.personne.prenom}"></td>
 		                    <td th:text="${conseiller.personne.nom}"></td>
+		                    <td th:text="${conseiller.customers.size()}"></td>
 		                </tr>
 		            </tbody>
 		        </table>
