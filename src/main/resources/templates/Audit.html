@@ -77,11 +77,15 @@
 		        			<td>
 		        				<div th:each="compte : ${clientsdeficit.comptes}">
 		        					<div>
-		        						<span th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).COURANT}">compte courant:</span>
-		        						<span th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).EPARGNE}">compte épargne:</span>
+		        						<span th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).COURANT}">
+		        							compte courant:
+		        						</span>
+		        						<span th:if="${compte.type == T(com.formation.proxibanque.lmhmjw.entity.enums.TypeCompte).EPARGNE}">
+		        							compte épargne:
+		        						</span>
 		        						<span th:text="${compte.solde}+€"></span>
 		        					</div>
-		        				</div>
+		        				</div>		
 		        			</td>
 			        	</tr>
 			        </tbody>
